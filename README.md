@@ -13,7 +13,6 @@
   <img src="https://img.shields.io/badge/Game-2D%20Pixel%20Art-EC4899?style=for-the-badge" alt="2D Pixel Art"/>
   <img src="https://img.shields.io/badge/AI-Gemini%20Integration-4285F4?style=for-the-badge" alt="AI Integration"/>
   <img src="https://img.shields.io/badge/Email-Gmail%20OAuth-EA4335?style=for-the-badge" alt="Gmail OAuth"/>
-  <img src="https://img.shields.io/badge/Blockchain-Algorand%20TestNet-000000?style=for-the-badge" alt="Algorand TestNet"/>
 </p>
 
 <p align="center">
@@ -56,14 +55,7 @@
 
 Instead of treating email as another boring task, MailXP places players inside a lively, top-down, 2D pixel-art workplace. Players interact with characters, receive workplace challenges, learn how to write better emails, and progress through an experience built around communication, productivity, and career development.
 
-The experience combines:
-
-- A 2D workplace exploration game.
-- Interactive characters and workplace scenarios.
-- Real Gmail connectivity through Google OAuth.
-- AI-assisted email understanding and writing.
-- Progression systems, experience points, and achievements.
-- A planned DraftCoin game economy powered by Algorand TestNet and Pera Wallet.
+The current application combines a Phaser-powered office game, a Next.js web app and API, player accounts and progression, Google OAuth-based Gmail access, a synchronized in-game inbox, and optional AI analysis of email messages. The AI feature is advisory: it summarizes and classifies a message and extracts possible action items and deadlines; it does not write or send replies.
 
 MailXP is designed to make professional communication feel less like an obligation and more like a game worth returning to.
 
@@ -71,22 +63,17 @@ MailXP is designed to make professional communication feel less like an obligati
 
 | Category | Description |
 |---|---|
-| Project | MailXP |
-| Product category | Gamified productivity and AI email assistant |
-| Game style | Top-down 2D pixel-art workplace |
-| Primary experience | Explore, interact, read, write, and manage emails |
-| Email provider | Gmail |
-| Authentication | Google OAuth |
-| AI direction | Gemini-powered email intelligence |
-| Backend direction | Node.js and Express |
-| Frontend direction | React and JavaScript |
-| Database direction | MongoDB |
-| Blockchain direction | Algorand TestNet |
-| Wallet direction | Pera Wallet |
-| Planned game currency | DraftCoin (`$DRAFT`) |
-| Development approach | Incremental, phase-based implementation |
+| Application | Next.js App Router application with React and TypeScript |
+| Game | Phaser 3 top-down pixel-art office |
+| API | Versioned Next.js route handlers under `/api/v1` |
+| Database | PostgreSQL accessed through Prisma |
+| Accounts | Email/password sessions and Google OAuth integration |
+| Email | Gmail synchronization, plain-text inbox, connection management |
+| AI | Optional Gemini-based advisory message analysis |
+| Tests | Vitest |
+| Delivery status | B10 AI analysis is implemented; blockchain and wallet integration are not part of the current stack |
 
-> **Development status:** The Gmail integration milestones B8, B8A, and B8B have been completed, and B9 has been reported complete with 617/617 tests passing and build and migration checks passing. B10 is the next planned AI Email Intelligence milestone. Other game, AI, and blockchain capabilities should be treated according to their actual implementation status in the repository.
+> **Implementation status:** Gmail OAuth, mailbox synchronization, the in-game inbox, game state/economy services, and B10 advisory email analysis have implementation reports in [`docs/`](./docs/). The current AI analysis implementation does not create drafts or perform Gmail write actions. Use the source code and phase reports—not the long-term product vision below—as the authority for what is available today.
 
 ---
 
@@ -145,24 +132,23 @@ MailXP combines an interactive game with practical productivity functionality.
 
 Players enter a virtual workplace, interact with characters, complete communication challenges, and use AI assistance to understand and compose emails.
 
-The product has two connected dimensions:
+The current product connects two experiences:
 
 **The game layer**
 
 - Explore an interactive workplace.
 - Discover characters and scenarios.
-- Complete missions and communication challenges.
-- Earn experience and unlock progression.
-- Personalize the experience as the game expands.
+- Explore the office using the Phaser game interface.
+- Interact with game characters and open game screens.
+- Manage player progression, rewards, inventory, and shop state.
 
 **The productivity layer**
 
 - Connect a real Gmail account.
 - Access authorized email functionality.
-- Understand incoming messages with AI assistance.
-- Identify important messages, tasks, and deadlines.
-- Prepare better email drafts.
-- Keep the user in control of real-world communication.
+- Synchronize and read authorized Gmail messages in the in-game inbox.
+- Request Gemini-powered summaries, classifications, priorities, action items, and deadlines.
+- Keep analysis advisory-only; the current integration does not send email or create drafts.
 
 The goal is not to replace Gmail. It is to build an engaging layer around email productivity and professional skill development.
 
@@ -186,38 +172,31 @@ The intended experience includes:
 
 The workplace should feel like a cohesive game world, not simply a website decorated with pixel art.
 
-### 📧 2. Real Gmail Integration
+### 📧 2. Gmail Connection and Inbox
 
-MailXP connects users to Gmail through Google's OAuth authorization flow.
+Users can connect a Google account through OAuth and synchronize Gmail messages into the MailXP inbox. The server enforces at most one connected Gmail account per MailXP account and provides explicit connection management.
 
-The integration is designed to support:
+The implemented inbox flow includes:
 
-- Google account authorization.
-- Secure Gmail connection management.
-- Access to authorized Gmail functionality.
-- A one-Gmail-account-per-MailXP-account rule.
-- Connection status management.
-- Revocation and disconnection handling.
-- A foundation for email synchronization and AI analysis.
+- A 30-day initial history window, followed by incremental reconciliation.
+- A "Sync now" action and queued sync work.
+- Cursor-paginated, newest-first message listing and per-message detail.
+- Plain-text message display; HTML is not rendered or stored.
+- Attachment metadata only; attachment bytes are not downloaded.
+- Cleanup of synchronized messages when a connection is released or deleted.
 
-Users must explicitly authorize access. The application should only request the permissions required for its actual features.
+The current Gmail API integration is read-only. Sending, drafting, labeling, or marking messages read is not implemented.
 
 ### 🤖 3. AI Email Intelligence
 
-The planned AI intelligence layer is designed to help users understand incoming messages and respond effectively.
+When configured with a Gemini API key, MailXP can queue advisory analysis for synchronized Gmail messages. Results are shown alongside the message in the in-game inbox and include:
 
-Potential capabilities include:
+- A short summary, category, and priority.
+- Potential action items and deadlines.
+- A clear status for queued, running, completed, limited, stale, or failed analysis.
+- Manual analyze/retry controls and an optional pause setting.
 
-- Email summarization.
-- Message classification.
-- Priority assessment.
-- Extraction of tasks and deadlines.
-- Suggested replies.
-- Professional tone improvements.
-- Context-aware writing assistance.
-- Structured results for use in the game interface.
-
-These capabilities are being developed incrementally rather than treated as a single completed feature.
+Analysis runs in the durable server-side job pipeline, is bounded by an input size and per-player daily usage limit, and validates model output before saving it. The default daily limit is 20 analyses per player per UTC day. AI output is guidance only: MailXP does not use it to send messages or change Gmail.
 
 ### 🎯 4. Missions and Workplace Challenges
 
@@ -251,13 +230,9 @@ Planned progression mechanics include:
 
 Rewards should encourage useful behaviour rather than incentivize unnecessary email activity.
 
-### 🪙 6. DraftCoin Economy
+### 🪙 6. Game Economy
 
-DraftCoin (`$DRAFT`) is the proposed in-game currency for the broader MailXP ecosystem.
-
-The planned economy may support rewards, cosmetic unlocks, and purchases through an in-game marketplace.
-
-The intended blockchain direction uses Algorand TestNet and Pera Wallet. Blockchain functionality remains subject to the implementation and verification of the corresponding milestones.
+The application includes server-backed player state, rewards, inventory, a shop, and purchase/ledger flows. These are application features, not blockchain transactions. DraftCoin on Algorand and Pera Wallet remain product ideas; this repository does not currently provide a live blockchain or wallet integration.
 
 ### 🔐 7. Security-First Account Management
 
@@ -330,7 +305,7 @@ The central gameplay loop connects workplace exploration with email-related acti
 2. **Explore and interact** — Move around the office and discover characters, stations, and tasks.
 3. **Receive a mission** — Encounter a communication challenge or an authorized email-related task.
 4. **Understand the context** — Review the message, objective, and relevant information.
-5. **Complete the activity** — Write a draft, improve a response, identify important details, or complete the assigned task.
+5. **Complete the activity** — Identify important details or action items, or work through a simulated communication challenge. Creating or sending Gmail drafts is not currently supported.
 6. **Use AI assistance when appropriate** — Request summaries, writing suggestions, or other supported intelligence features.
 7. **Review the result** — Evaluate whether the objective has been achieved.
 8. **Progress** — Earn applicable game rewards, gain experience, and unlock additional content.
@@ -342,9 +317,9 @@ Actual Gmail actions must be distinguished from simulated missions. Sending an e
 
 ## 🧠 AI Email Intelligence
 
-AI is intended to be a central component of MailXP, but it must operate as a controlled application capability rather than an unrestricted agent.
+The B10 implementation provides optional, advisory-only analysis of synchronized Gmail messages. It operates as a controlled server-side capability, not as an unrestricted agent.
 
-### Planned processing pipeline
+### Processing pipeline
 
 ```text
 Authorized Gmail Message
@@ -386,7 +361,7 @@ Produce concise explanations of lengthy messages and conversations.
 
 **Classification**
 
-Identify useful categories, such as work, education, recruitment, informational messages, and other supported classifications.
+Assign one of the supported categories: work, personal, finance, shopping, travel, notification, promotion, social, or other.
 
 **Priority assessment**
 
@@ -398,7 +373,7 @@ Identify possible action items, dates, requested responses, and commitments.
 
 **Draft assistance**
 
-Help users generate or improve professional email drafts using relevant context.
+Generating or editing drafts is a possible future capability. The current B10 feature does not draft or send messages.
 
 ### AI safety requirements
 
@@ -576,53 +551,30 @@ Not every game action needs to be recorded on-chain. Keeping routine gameplay an
 
 ## 🏗️ Technical Architecture
 
-MailXP follows a modular application architecture intended to separate the game experience, business logic, integrations, and persistence.
+MailXP is a single Next.js application. The App Router serves the game and account screens as well as the versioned API. Server-only domain modules own authentication, persistence, Gmail and Gemini provider calls, queued jobs, and game rules; React components and the Phaser game communicate with those services through the API client.
 
 ```text
-+--------------------------------------------------+
-|                 MAILXP FRONTEND                  |
-|                                                  |
-|  +----------------+   +-----------------------+  |
-|  | 2D Game World  |   | Productivity UI       |  |
-|  | Player / NPCs  |   | Inbox / Drafts / AI   |  |
-|  +----------------+   +-----------------------+  |
-|                                                  |
-|       React Components and Client State          |
-+--------------------------+-----------------------+
-                           |
-                           | HTTPS / API
-                           v
-+--------------------------------------------------+
-|                 BACKEND API                      |
-|                                                  |
-|  Authentication and Authorization                |
-|  Gmail Connection Management                     |
-|  Email and Draft Services                        |
-|  AI Intelligence and Job Processing              |
-|  Game Progression and Reward Validation          |
-|  Wallet / Blockchain Services                    |
-+--------------------------+-----------------------+
-                           |
-              +------------+-------------+
-              |            |             |
-              v            v             v
-       +------------+ +----------+ +-------------+
-       | MongoDB    | | Gemini   | | Google      |
-       | Persistence| | AI API   | | Gmail APIs  |
-       +------------+ +----------+ +-------------+
-              |
-              v
-       +--------------------------+
-       | Algorand / Pera Wallet   |
-       | Planned Web3 Integration |
-       +--------------------------+
+Browser: Next.js / React UI + Phaser office game
+                         |
+                  /api/v1 route handlers
+                         |
+     +-------------------+----------------------+
+     |                   |                      |
+Authentication      Game / inbox          AI analysis
+and sessions         domain services       durable jobs
+     |                   |                      |
+     +-------------------+----------------------+
+                         |
+               Prisma + PostgreSQL
+                  /             \
+            Gmail API        Gemini API
 ```
 
-The diagram represents the intended logical architecture. Individual connections should be considered implemented only when supported by the actual repository.
+Gmail and Gemini calls are made by server-side integration modules. Gmail synchronization and AI analysis use the server-side job/outbox pipeline. Application data is stored in PostgreSQL through Prisma; no separate Express or MongoDB service is required.
 
 ### Architecture principles
 
-**Modularity:** Keep game logic, Gmail operations, AI processing, and blockchain integrations separated.
+**Modularity:** Keep game logic, Gmail operations, AI processing, and persistence separated.
 
 **Server-side enforcement:** Sensitive operations and authorization checks belong on the backend.
 
@@ -638,80 +590,38 @@ The diagram represents the intended logical architecture. Individual connections
 
 ## 🛠️ Technology Stack
 
-The following technologies represent the project's established direction. Confirm the exact installed versions and current dependencies in the repository before deployment.
+The current stack is reflected in `package.json`:
 
 | Technology | Purpose |
 |---|---|
-| React | Frontend components and application interfaces |
-| JavaScript | Application development |
-| Tailwind CSS | Styling and responsive UI |
-| Node.js | Backend JavaScript runtime |
-| Express.js | HTTP API and middleware |
-| MongoDB | Persistent application data |
-| Google OAuth 2.0 | Google account authorization |
-| Gmail API | Authorized Gmail operations |
-| Gemini API | Planned AI email intelligence |
-| Algorand | Planned blockchain economy |
-| Algorand Standard Assets | Planned DraftCoin asset |
-| Pera Wallet Connect | Planned wallet connection |
-| Git and GitHub | Version control and collaboration |
-
-The actual dependency list, versions, rendering or game engine, job queue, test framework, and deployment platform should be determined from the repository rather than inferred from this overview.
+| Next.js 16 | Application framework, App Router, server-rendered pages, and API route handlers |
+| React 19 | User interface |
+| TypeScript | Application and API implementation |
+| Phaser 3 | Interactive 2D office game |
+| PostgreSQL | Persistent application data |
+| Prisma 7 | Database schema, client, and migrations |
+| Google OAuth and Gmail API | Account connection and read-only mailbox integration |
+| `@google/genai` | Optional server-side Gemini email analysis |
+| Tailwind CSS 4 | Styling |
+| Vitest | Unit and integration tests |
 
 ---
 
 ## 📁 Project Structure
 
-The following is a conceptual organization for the application. Adapt it to the existing repository instead of creating duplicate folders simply to match the diagram.
-
 ```text
-mailxp/
-│
-├── client/                       # React frontend, if separated
-│   ├── public/
-│   │   └── assets/
-│   │       ├── characters/
-│   │       ├── tiles/
-│   │       ├── environments/
-│   │       └── ui/
-│   │
-│   └── src/
-│       ├── components/
-│       ├── game/
-│       │   ├── world/
-│       │   ├── player/
-│       │   ├── characters/
-│       │   └── interactions/
-│       ├── pages/
-│       ├── services/
-│       ├── hooks/
-│       └── styles/
-│
-├── server/                       # Backend, if separated
-│   ├── routes/
-│   ├── controllers/
-│   ├── services/
-│   ├── middleware/
-│   ├── models/
-│   ├── jobs/
-│   ├── integrations/
-│   │   ├── gmail/
-│   │   ├── gemini/
-│   │   └── algorand/
-│   └── tests/
-│
-├── docs/
-│   ├── architecture/
-│   ├── development-phases/
-│   └── reports/
-│
-├── .env.example
-├── .gitignore
-├── package.json
-└── README.md
+app/                     # Next.js pages and /api/v1 route handlers
+components/              # React screens, API client, and game UI
+game/                    # Phaser game setup, scenes, assets config, and state
+lib/server/              # Server-only domain services and integrations
+prisma/                  # PostgreSQL schema and ordered migrations
+public/assets/            # Static game and shop assets
+docs/                     # API contracts, phase plans, and implementation reports
+package.json              # App scripts and dependencies
+.env.example              # Local environment variable template
 ```
 
-**Note:** This tree is illustrative, not a claim about the exact files currently present in the repository. Keep the existing structure and update this section to reflect the real project layout.
+API route handlers are intentionally thin; most reusable server-side logic lives in `lib/server/`. Phase reports in `docs/` record implementation scope, decisions, and validation for individual milestones.
 
 ---
 
@@ -719,106 +629,68 @@ mailxp/
 
 ### Prerequisites
 
-Install the tools required by the actual application:
-
-- Node.js and npm.
-- Git.
-- MongoDB, or a supported MongoDB connection.
-- A Google Cloud project configured for OAuth and the required Gmail API access.
-- A Gemini API key when implementing or testing AI features.
-- Algorand TestNet and Pera Wallet configuration when working on the blockchain milestone.
+- Node.js compatible with the Next.js version in `package.json`, and npm.
+- PostgreSQL for local application data.
+- A Google Cloud OAuth client only if you want to test Google sign-in or Gmail integration.
+- A Gemini API key only if you want to enable AI email analysis.
 
 ### 1. Clone the repository
 
 ```bash
-git clone <YOUR_REPOSITORY_URL>
-cd <YOUR_PROJECT_DIRECTORY>
+git clone https://github.com/SrijitaGoswami/MailXP.git
+cd MailXP
 ```
 
-Replace the placeholders with your actual repository URL and project directory.
-
-### 2. Install dependencies
-
-If the project uses a single root `package.json`:
+### 2. Install dependencies and configure the database
 
 ```bash
 npm install
 ```
 
-If the frontend and backend use separate package files, install dependencies in each relevant directory:
-
-```bash
-cd client
-npm install
-cd ../server
-npm install
-```
-
-Use the commands matching the actual repository structure.
-
-### 3. Configure environment variables
-
-Create the required local environment file based on `.env.example` or the application's existing configuration.
-
-```bash
-cp .env.example .env
-```
-
-On Windows PowerShell, you can use:
+Copy the checked-in template to a local `.env` file, then set `DATABASE_URL` to a PostgreSQL database that you control. Use your own credentials; `.env` is local configuration and must not be committed.
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-Fill in the required values for your local environment. Do not commit actual credentials.
+Apply the repository's Prisma migrations:
 
-### 4. Start the application
+```bash
+npx prisma migrate deploy
+```
 
-Check the root and individual `package.json` files for the real scripts.
-
-Typical commands, **only if defined by the project**, may look like:
+### 3. Run the application
 
 ```bash
 npm run dev
 ```
 
-For a separate frontend and backend, start each service using its own documented development command.
+Open `http://localhost:3000`. The app requires `DATABASE_URL`. Google OAuth variables and the token-encryption key are needed for Google account connection; a Gemini API key is optional and enables AI analysis. Exact names and safe placeholders are listed in `.env.example`.
 
-### 5. Verify the application
+### 4. Run checks
 
-After startup:
-
-1. Confirm the frontend loads.
-2. Confirm the backend starts without configuration errors.
-3. Check database connectivity.
-4. Verify the authentication flow.
-5. Test Gmail connection and disconnection.
-6. Run the existing test suite.
-7. Test AI or blockchain functionality only when its corresponding configuration is available.
+```bash
+npm test
+npm run build
+```
 
 ---
 
 ## 🔑 Environment Configuration
 
-MailXP integrates with services that may require secrets and application-specific configuration.
-
-The table below lists configuration categories, not exact environment variable names. Use the names defined in the project's source code and `.env.example`.
+Configure only the integrations you intend to run. `.env.example` is the source of truth for variable names and defaults.
 
 | Configuration | Purpose |
 |---|---|
-| Server port | Backend listening port |
-| Database connection | MongoDB URI or equivalent database configuration |
-| Session or token secret | Server-side authentication and session security, where applicable |
-| Google OAuth client ID | Google authorization configuration |
-| Google OAuth client secret | Server-side OAuth exchange, where applicable |
-| Google OAuth callback URL | Registered authorization callback |
-| Gmail API configuration | Required scopes and service settings |
-| Gemini API key | AI provider access |
-| Algorand network configuration | TestNet or another explicitly supported network |
-| DraftCoin asset ID | Asset identifier after actual asset creation |
-| Pera Wallet configuration | Supported wallet connection settings |
-
-Do not copy these labels into `.env` as variable names unless they match the code.
+| `DATABASE_URL` | Required PostgreSQL connection string used by the app and Prisma |
+| `GOOGLE_CLIENT_ID` | Google OAuth client ID; required for Google account connection |
+| `GOOGLE_CLIENT_SECRET` | Server-side OAuth client secret |
+| `GOOGLE_REDIRECT_URI` | OAuth callback URL; defaults in the template to the local callback route |
+| `GOOGLE_TOKEN_ENCRYPTION_KEY` | Base64-encoded 32-byte key used to encrypt stored Google refresh tokens |
+| `GEMINI_API_KEY` | Optional Gemini key; without it, AI analysis is unavailable |
+| `GEMINI_MODEL` | Optional model identifier; defaults to `gemini-2.5-flash` |
+| `AI_DAILY_LIMIT` | Optional per-player daily analysis budget; defaults to 20 |
+| `WORKER_ENABLED` | Optional worker switch; setting it to `false` disables the background worker |
 
 ### Secrets management rules
 
@@ -843,29 +715,25 @@ MailXP is developed through explicit phases to keep implementation manageable an
 | B8 | Gmail integration foundation | Reported complete |
 | B8A | Gmail integration hardening and related requirements | Reported complete |
 | B8B | Enforcing one active Gmail connection and real revocation handling | Reported complete |
-| B9 | Gmail integration completion and verification | Reported complete; 617/617 tests reported passing, with build and migration checks passing |
-| B10 | Gemini AI Email Intelligence | Next planned milestone |
+| B9 | Gmail integration completion and verification | Implemented; see [`docs/B9_REPORT.md`](./docs/B9_REPORT.md) |
+| B10 | Gemini AI Email Intelligence | Implemented; see [`docs/B10_REPORT.md`](./docs/B10_REPORT.md) |
 
 ### B10 — Gemini AI Email Intelligence
 
-The next planned phase is focused on integrating intelligence into the email workflow.
-
-The intended scope includes:
+The B10 implementation adds optional advisory analysis to synchronized Gmail messages:
 
 - AI-generated email summaries.
 - Message classification.
 - Priority assessment.
 - Extraction of tasks and deadlines.
-- Prompt-injection protection.
-- Usage limits.
-- Durable background jobs where required.
-- Database persistence.
-- Frontend integration.
-- Automated testing and implementation reporting.
+- A durable background job flow with coalescing, failure handling, and retry.
+- Per-player daily usage accounting and a global pause control.
+- A bounded input and strict validation of structured model output.
+- Inbox and settings UI for analysis, usage, pause, and retry states.
 
-B10 should be considered complete only when its implementation, error handling, tests, and verification report support that conclusion.
+The feature fails closed when no Gemini API key is configured. Analysis output is not an instruction to the application: no model output triggers an external Gmail action. Consult [`docs/BACKEND_PHASE_PLAN.md`](./docs/BACKEND_PHASE_PLAN.md) for the current backend sequencing before starting follow-on work.
 
-### Subsequent product milestones
+### Future product milestones
 
 Beyond the current backend sequence, the broader product direction includes the following areas. Their exact phase numbers and completion states should follow the project's planning documents.
 
@@ -962,9 +830,7 @@ Before treating a blockchain feature as complete, verify:
 
 ### Current verification note
 
-The B9 milestone has been reported with **617 passing tests out of 617**, alongside successful build and migration checks. This is a milestone-specific report, not a guarantee that every future feature or production environment is tested.
-
-Run the actual repository test commands before making claims about the current branch.
+The B10 implementation report records **648 passing tests**, a successful TypeScript check and Next.js build, and successful Prisma validation and migration-status checks at the time of that report. This is a milestone-specific record, not a live CI result. Run `npm test` and `npm run build` against the current checkout to verify it.
 
 ---
 
@@ -1094,7 +960,7 @@ Contributions that improve the product's usability, security, architecture, game
 1. Review the existing project structure and phase documentation.
 2. Identify a focused issue or improvement.
 3. Create a dedicated branch.
-4. Follow the project's existing JavaScript and coding conventions.
+4. Follow the project's existing TypeScript and formatting conventions.
 5. Add or update tests for behavioural changes.
 6. Run relevant checks before submitting.
 7. Document changes to configuration, APIs, or database behaviour.
@@ -1121,11 +987,7 @@ Until a license is explicitly added to the repository, do not assume that the so
 
 ## 👨‍💻 Project Status
 
-MailXP is an evolving project combining an interactive 2D workplace game, real Gmail integration, AI-assisted productivity, and a planned blockchain-enabled game economy.
-
-The immediate engineering priority is to complete and verify the Gemini AI Email Intelligence milestone while maintaining the reliability of the Gmail integration already established in earlier phases.
-
-The broader objective is to build a cohesive product in which the game, AI assistant, email workflows, progression system, and optional digital economy work together as a single experience.
+MailXP currently combines an interactive 2D workplace game, account and game-state services, Gmail inbox synchronization, and optional Gemini-based advisory analysis. The B9 and B10 phase reports document the implemented Gmail and AI capabilities. DraftCoin on Algorand, Pera Wallet, email drafting/sending, and other future ideas are not current, verified features.
 
 ---
 
