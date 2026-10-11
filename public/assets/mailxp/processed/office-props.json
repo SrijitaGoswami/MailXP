@@ -1,0 +1,445 @@
+{
+    "frames":  [
+                   {
+                       "filename":  "desk",
+                       "frame":  {
+                                     "x":  30,
+                                     "y":  71,
+                                     "w":  347,
+                                     "h":  313
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  347,
+                                                "h":  313
+                                            },
+                       "sourceSize":  {
+                                          "w":  347,
+                                          "h":  313
+                                      }
+                   },
+                   {
+                       "filename":  "chair",
+                       "frame":  {
+                                     "x":  392,
+                                     "y":  71,
+                                     "w":  203,
+                                     "h":  313
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  203,
+                                                "h":  313
+                                            },
+                       "sourceSize":  {
+                                          "w":  203,
+                                          "h":  313
+                                      }
+                   },
+                   {
+                       "filename":  "computer",
+                       "frame":  {
+                                     "x":  615,
+                                     "y":  71,
+                                     "w":  238,
+                                     "h":  313
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  238,
+                                                "h":  313
+                                            },
+                       "sourceSize":  {
+                                          "w":  238,
+                                          "h":  313
+                                      }
+                   },
+                   {
+                       "filename":  "printer",
+                       "frame":  {
+                                     "x":  878,
+                                     "y":  71,
+                                     "w":  217,
+                                     "h":  313
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  217,
+                                                "h":  313
+                                            },
+                       "sourceSize":  {
+                                          "w":  217,
+                                          "h":  313
+                                      }
+                   },
+                   {
+                       "filename":  "phone",
+                       "frame":  {
+                                     "x":  1119,
+                                     "y":  71,
+                                     "w":  190,
+                                     "h":  313
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  190,
+                                                "h":  313
+                                            },
+                       "sourceSize":  {
+                                          "w":  190,
+                                          "h":  313
+                                      }
+                   },
+                   {
+                       "filename":  "cabinet",
+                       "frame":  {
+                                     "x":  1346,
+                                     "y":  71,
+                                     "w":  149,
+                                     "h":  313
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  149,
+                                                "h":  313
+                                            },
+                       "sourceSize":  {
+                                          "w":  149,
+                                          "h":  313
+                                      }
+                   },
+                   {
+                       "filename":  "bookshelf",
+                       "frame":  {
+                                     "x":  31,
+                                     "y":  404,
+                                     "w":  268,
+                                     "h":  333
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  268,
+                                                "h":  333
+                                            },
+                       "sourceSize":  {
+                                          "w":  268,
+                                          "h":  333
+                                      }
+                   },
+                   {
+                       "filename":  "couch",
+                       "frame":  {
+                                     "x":  313,
+                                     "y":  404,
+                                     "w":  360,
+                                     "h":  333
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  360,
+                                                "h":  333
+                                            },
+                       "sourceSize":  {
+                                          "w":  360,
+                                          "h":  333
+                                      }
+                   },
+                   {
+                       "filename":  "plant",
+                       "frame":  {
+                                     "x":  673,
+                                     "y":  404,
+                                     "w":  194,
+                                     "h":  333
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  194,
+                                                "h":  333
+                                            },
+                       "sourceSize":  {
+                                          "w":  194,
+                                          "h":  333
+                                      }
+                   },
+                   {
+                       "filename":  "water-cooler",
+                       "frame":  {
+                                     "x":  894,
+                                     "y":  404,
+                                     "w":  133,
+                                     "h":  333
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  133,
+                                                "h":  333
+                                            },
+                       "sourceSize":  {
+                                          "w":  133,
+                                          "h":  333
+                                      }
+                   },
+                   {
+                       "filename":  "notice-board",
+                       "frame":  {
+                                     "x":  1061,
+                                     "y":  404,
+                                     "w":  269,
+                                     "h":  333
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  269,
+                                                "h":  333
+                                            },
+                       "sourceSize":  {
+                                          "w":  269,
+                                          "h":  333
+                                      }
+                   },
+                   {
+                       "filename":  "mailbox",
+                       "frame":  {
+                                     "x":  1358,
+                                     "y":  404,
+                                     "w":  148,
+                                     "h":  333
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  148,
+                                                "h":  333
+                                            },
+                       "sourceSize":  {
+                                          "w":  148,
+                                          "h":  333
+                                      }
+                   },
+                   {
+                       "filename":  "lockers",
+                       "frame":  {
+                                     "x":  31,
+                                     "y":  757,
+                                     "w":  215,
+                                     "h":  214
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  215,
+                                                "h":  214
+                                            },
+                       "sourceSize":  {
+                                          "w":  215,
+                                          "h":  214
+                                      }
+                   },
+                   {
+                       "filename":  "clock",
+                       "frame":  {
+                                     "x":  265,
+                                     "y":  757,
+                                     "w":  150,
+                                     "h":  214
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  150,
+                                                "h":  214
+                                            },
+                       "sourceSize":  {
+                                          "w":  150,
+                                          "h":  214
+                                      }
+                   },
+                   {
+                       "filename":  "lamp",
+                       "frame":  {
+                                     "x":  430,
+                                     "y":  757,
+                                     "w":  142,
+                                     "h":  214
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  142,
+                                                "h":  214
+                                            },
+                       "sourceSize":  {
+                                          "w":  142,
+                                          "h":  214
+                                      }
+                   },
+                   {
+                       "filename":  "wastebasket",
+                       "frame":  {
+                                     "x":  581,
+                                     "y":  757,
+                                     "w":  122,
+                                     "h":  214
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  122,
+                                                "h":  214
+                                            },
+                       "sourceSize":  {
+                                          "w":  122,
+                                          "h":  214
+                                      }
+                   },
+                   {
+                       "filename":  "mug",
+                       "frame":  {
+                                     "x":  726,
+                                     "y":  757,
+                                     "w":  127,
+                                     "h":  214
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  127,
+                                                "h":  214
+                                            },
+                       "sourceSize":  {
+                                          "w":  127,
+                                          "h":  214
+                                      }
+                   },
+                   {
+                       "filename":  "parcel",
+                       "frame":  {
+                                     "x":  867,
+                                     "y":  757,
+                                     "w":  156,
+                                     "h":  214
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  156,
+                                                "h":  214
+                                            },
+                       "sourceSize":  {
+                                          "w":  156,
+                                          "h":  214
+                                      }
+                   },
+                   {
+                       "filename":  "envelope",
+                       "frame":  {
+                                     "x":  1044,
+                                     "y":  757,
+                                     "w":  136,
+                                     "h":  214
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  136,
+                                                "h":  214
+                                            },
+                       "sourceSize":  {
+                                          "w":  136,
+                                          "h":  214
+                                      }
+                   },
+                   {
+                       "filename":  "papers",
+                       "frame":  {
+                                     "x":  1201,
+                                     "y":  757,
+                                     "w":  154,
+                                     "h":  214
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  154,
+                                                "h":  214
+                                            },
+                       "sourceSize":  {
+                                          "w":  154,
+                                          "h":  214
+                                      }
+                   },
+                   {
+                       "filename":  "draftcoin",
+                       "frame":  {
+                                     "x":  1375,
+                                     "y":  757,
+                                     "w":  133,
+                                     "h":  214
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  133,
+                                                "h":  214
+                                            },
+                       "sourceSize":  {
+                                          "w":  133,
+                                          "h":  214
+                                      }
+                   }
+               ]
+}

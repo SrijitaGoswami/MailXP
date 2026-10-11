@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+:root {
+  /* MailXP palette tokens (warm cream / teal / walnut) */
+  --mailxp-cream: #f7f1e3;
+  --mailxp-teal: #2f7f7f;
+  --mailxp-walnut: #5b4232;
+  --background: var(--mailxp-cream);
+  --foreground: #2b2b2b;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/*
+ * Phase 7 — the game owns the browser viewport: while AppShell is mounted the
+ * page never scrolls (long menu content scrolls inside its own panel instead).
+ * Scoped to the home route so /preview and any future doc pages keep normal
+ * scrolling.
+ */
+body.mailxp-game-active {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+/* Keyboard focus must always be visible (Phase 6 polish). */
+:focus-visible {
+  outline: 3px solid var(--mailxp-teal);
+  outline-offset: 2px;
+}
+
+/*
+ * Reduced motion, honored twice:
+ *  1. the OS-level media query, always;
+ *  2. [data-motion="reduced"] — the in-app Settings toggle (AppShell mirrors
+ *     the local profile preference onto <html>).
+ * Animations/transitions collapse to near-instant; the game itself also parks
+ * its looping marker tweens via OfficeScene.reducedMotion().
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+[data-motion="reduced"] *,
+[data-motion="reduced"] *::before,
+[data-motion="reduced"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}

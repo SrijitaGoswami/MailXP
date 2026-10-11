@@ -1,0 +1,1076 @@
+{
+    "generatedBy":  "scripts/generate-assets.ps1",
+    "generatedAt":  "2026-10-06T17:05:56.6025095+05:30",
+    "originals":  "public/assets/mailxp/** (untouched; this folder holds derived outputs only)",
+    "atlasFrames":  {
+                        "office-props":  {
+                                             "source":  "/assets/mailxp/office/office-props.png",
+                                             "atlas":  "/assets/mailxp/processed/office-props.json",
+                                             "frames":  [
+                                                            {
+                                                                "name":  "desk",
+                                                                "x":  30,
+                                                                "y":  71,
+                                                                "w":  347,
+                                                                "h":  313
+                                                            },
+                                                            {
+                                                                "name":  "chair",
+                                                                "x":  392,
+                                                                "y":  71,
+                                                                "w":  203,
+                                                                "h":  313
+                                                            },
+                                                            {
+                                                                "name":  "computer",
+                                                                "x":  615,
+                                                                "y":  71,
+                                                                "w":  238,
+                                                                "h":  313
+                                                            },
+                                                            {
+                                                                "name":  "printer",
+                                                                "x":  878,
+                                                                "y":  71,
+                                                                "w":  217,
+                                                                "h":  313
+                                                            },
+                                                            {
+                                                                "name":  "phone",
+                                                                "x":  1119,
+                                                                "y":  71,
+                                                                "w":  190,
+                                                                "h":  313
+                                                            },
+                                                            {
+                                                                "name":  "cabinet",
+                                                                "x":  1346,
+                                                                "y":  71,
+                                                                "w":  149,
+                                                                "h":  313
+                                                            },
+                                                            {
+                                                                "name":  "bookshelf",
+                                                                "x":  31,
+                                                                "y":  404,
+                                                                "w":  268,
+                                                                "h":  333
+                                                            },
+                                                            {
+                                                                "name":  "couch",
+                                                                "x":  313,
+                                                                "y":  404,
+                                                                "w":  360,
+                                                                "h":  333
+                                                            },
+                                                            {
+                                                                "name":  "plant",
+                                                                "x":  673,
+                                                                "y":  404,
+                                                                "w":  194,
+                                                                "h":  333
+                                                            },
+                                                            {
+                                                                "name":  "water-cooler",
+                                                                "x":  894,
+                                                                "y":  404,
+                                                                "w":  133,
+                                                                "h":  333
+                                                            },
+                                                            {
+                                                                "name":  "notice-board",
+                                                                "x":  1061,
+                                                                "y":  404,
+                                                                "w":  269,
+                                                                "h":  333
+                                                            },
+                                                            {
+                                                                "name":  "mailbox",
+                                                                "x":  1358,
+                                                                "y":  404,
+                                                                "w":  148,
+                                                                "h":  333
+                                                            },
+                                                            {
+                                                                "name":  "lockers",
+                                                                "x":  31,
+                                                                "y":  757,
+                                                                "w":  215,
+                                                                "h":  214
+                                                            },
+                                                            {
+                                                                "name":  "clock",
+                                                                "x":  265,
+                                                                "y":  757,
+                                                                "w":  150,
+                                                                "h":  214
+                                                            },
+                                                            {
+                                                                "name":  "lamp",
+                                                                "x":  430,
+                                                                "y":  757,
+                                                                "w":  142,
+                                                                "h":  214
+                                                            },
+                                                            {
+                                                                "name":  "wastebasket",
+                                                                "x":  581,
+                                                                "y":  757,
+                                                                "w":  122,
+                                                                "h":  214
+                                                            },
+                                                            {
+                                                                "name":  "mug",
+                                                                "x":  726,
+                                                                "y":  757,
+                                                                "w":  127,
+                                                                "h":  214
+                                                            },
+                                                            {
+                                                                "name":  "parcel",
+                                                                "x":  867,
+                                                                "y":  757,
+                                                                "w":  156,
+                                                                "h":  214
+                                                            },
+                                                            {
+                                                                "name":  "envelope",
+                                                                "x":  1044,
+                                                                "y":  757,
+                                                                "w":  136,
+                                                                "h":  214
+                                                            },
+                                                            {
+                                                                "name":  "papers",
+                                                                "x":  1201,
+                                                                "y":  757,
+                                                                "w":  154,
+                                                                "h":  214
+                                                            },
+                                                            {
+                                                                "name":  "draftcoin",
+                                                                "x":  1375,
+                                                                "y":  757,
+                                                                "w":  133,
+                                                                "h":  214
+                                                            }
+                                                        ]
+                                         },
+                        "mail-effects":  {
+                                             "source":  "/assets/mailxp/items/mail-effects.png",
+                                             "atlas":  "/assets/mailxp/processed/mail-effects.json",
+                                             "frames":  [
+                                                            {
+                                                                "name":  "mail-closed",
+                                                                "x":  49,
+                                                                "y":  131,
+                                                                "w":  210,
+                                                                "h":  240
+                                                            },
+                                                            {
+                                                                "name":  "mail-open",
+                                                                "x":  293,
+                                                                "y":  131,
+                                                                "w":  204,
+                                                                "h":  240
+                                                            },
+                                                            {
+                                                                "name":  "letter",
+                                                                "x":  542,
+                                                                "y":  131,
+                                                                "w":  174,
+                                                                "h":  240
+                                                            },
+                                                            {
+                                                                "name":  "mail-sealed",
+                                                                "x":  753,
+                                                                "y":  131,
+                                                                "w":  212,
+                                                                "h":  240
+                                                            },
+                                                            {
+                                                                "name":  "parcel",
+                                                                "x":  997,
+                                                                "y":  131,
+                                                                "w":  202,
+                                                                "h":  240
+                                                            },
+                                                            {
+                                                                "name":  "package",
+                                                                "x":  1223,
+                                                                "y":  131,
+                                                                "w":  264,
+                                                                "h":  240
+                                                            },
+                                                            {
+                                                                "name":  "draftcoin",
+                                                                "x":  400,
+                                                                "y":  400,
+                                                                "w":  196,
+                                                                "h":  208
+                                                            },
+                                                            {
+                                                                "name":  "reward-token",
+                                                                "x":  655,
+                                                                "y":  400,
+                                                                "w":  190,
+                                                                "h":  208
+                                                            },
+                                                            {
+                                                                "name":  "sparkle",
+                                                                "x":  911,
+                                                                "y":  400,
+                                                                "w":  188,
+                                                                "h":  208
+                                                            },
+                                                            {
+                                                                "name":  "pickup-burst",
+                                                                "x":  64,
+                                                                "y":  620,
+                                                                "w":  198,
+                                                                "h":  308
+                                                            },
+                                                            {
+                                                                "name":  "interaction-ring",
+                                                                "x":  303,
+                                                                "y":  620,
+                                                                "w":  249,
+                                                                "h":  308
+                                                            },
+                                                            {
+                                                                "name":  "coin-burst",
+                                                                "x":  622,
+                                                                "y":  620,
+                                                                "w":  247,
+                                                                "h":  308
+                                                            },
+                                                            {
+                                                                "name":  "quest-burst",
+                                                                "x":  924,
+                                                                "y":  620,
+                                                                "w":  249,
+                                                                "h":  308
+                                                            },
+                                                            {
+                                                                "name":  "levelup-burst",
+                                                                "x":  1226,
+                                                                "y":  620,
+                                                                "w":  265,
+                                                                "h":  308
+                                                            }
+                                                        ]
+                                         },
+                        "office-npcs":  {
+                                            "source":  "/assets/mailxp/characters/npcs/office-npcs.png",
+                                            "atlas":  "/assets/mailxp/processed/office-npcs.json",
+                                            "grid":  "4 cols (officer, agent, monkey, intern) x 4 rows (down, left, right, up)",
+                                            "frames":  [
+                                                           {
+                                                               "name":  "officer-down",
+                                                               "x":  0,
+                                                               "y":  0,
+                                                               "w":  336,
+                                                               "h":  360
+                                                           },
+                                                           {
+                                                               "name":  "agent-down",
+                                                               "x":  336,
+                                                               "y":  0,
+                                                               "w":  303,
+                                                               "h":  360
+                                                           },
+                                                           {
+                                                               "name":  "monkey-down",
+                                                               "x":  639,
+                                                               "y":  0,
+                                                               "w":  319,
+                                                               "h":  360
+                                                           },
+                                                           {
+                                                               "name":  "intern-down",
+                                                               "x":  958,
+                                                               "y":  0,
+                                                               "w":  320,
+                                                               "h":  360
+                                                           },
+                                                           {
+                                                               "name":  "officer-left",
+                                                               "x":  0,
+                                                               "y":  360,
+                                                               "w":  336,
+                                                               "h":  310
+                                                           },
+                                                           {
+                                                               "name":  "agent-left",
+                                                               "x":  336,
+                                                               "y":  360,
+                                                               "w":  303,
+                                                               "h":  310
+                                                           },
+                                                           {
+                                                               "name":  "monkey-left",
+                                                               "x":  639,
+                                                               "y":  360,
+                                                               "w":  319,
+                                                               "h":  310
+                                                           },
+                                                           {
+                                                               "name":  "intern-left",
+                                                               "x":  958,
+                                                               "y":  360,
+                                                               "w":  320,
+                                                               "h":  310
+                                                           },
+                                                           {
+                                                               "name":  "officer-right",
+                                                               "x":  0,
+                                                               "y":  670,
+                                                               "w":  336,
+                                                               "h":  288
+                                                           },
+                                                           {
+                                                               "name":  "agent-right",
+                                                               "x":  336,
+                                                               "y":  670,
+                                                               "w":  303,
+                                                               "h":  288
+                                                           },
+                                                           {
+                                                               "name":  "monkey-right",
+                                                               "x":  639,
+                                                               "y":  670,
+                                                               "w":  319,
+                                                               "h":  288
+                                                           },
+                                                           {
+                                                               "name":  "intern-right",
+                                                               "x":  958,
+                                                               "y":  670,
+                                                               "w":  320,
+                                                               "h":  288
+                                                           },
+                                                           {
+                                                               "name":  "officer-up",
+                                                               "x":  0,
+                                                               "y":  958,
+                                                               "w":  336,
+                                                               "h":  272
+                                                           },
+                                                           {
+                                                               "name":  "agent-up",
+                                                               "x":  336,
+                                                               "y":  958,
+                                                               "w":  303,
+                                                               "h":  272
+                                                           },
+                                                           {
+                                                               "name":  "monkey-up",
+                                                               "x":  639,
+                                                               "y":  958,
+                                                               "w":  319,
+                                                               "h":  272
+                                                           },
+                                                           {
+                                                               "name":  "intern-up",
+                                                               "x":  958,
+                                                               "y":  958,
+                                                               "w":  320,
+                                                               "h":  272
+                                                           }
+                                                       ]
+                                        },
+                        "ai-workers":  {
+                                           "source":  "/assets/mailxp/characters/agents/ai-workers.png",
+                                           "atlas":  "/assets/mailxp/processed/ai-workers.json",
+                                           "grid":  "4 cols (front, left, right, back) x 2 rows (understanding, response)",
+                                           "frames":  [
+                                                          {
+                                                              "name":  "understanding-front",
+                                                              "x":  0,
+                                                              "y":  0,
+                                                              "w":  444,
+                                                              "h":  444
+                                                          },
+                                                          {
+                                                              "name":  "understanding-left",
+                                                              "x":  444,
+                                                              "y":  0,
+                                                              "w":  443,
+                                                              "h":  444
+                                                          },
+                                                          {
+                                                              "name":  "understanding-right",
+                                                              "x":  887,
+                                                              "y":  0,
+                                                              "w":  443,
+                                                              "h":  444
+                                                          },
+                                                          {
+                                                              "name":  "understanding-back",
+                                                              "x":  1330,
+                                                              "y":  0,
+                                                              "w":  444,
+                                                              "h":  444
+                                                          },
+                                                          {
+                                                              "name":  "response-front",
+                                                              "x":  0,
+                                                              "y":  444,
+                                                              "w":  444,
+                                                              "h":  443
+                                                          },
+                                                          {
+                                                              "name":  "response-left",
+                                                              "x":  444,
+                                                              "y":  444,
+                                                              "w":  443,
+                                                              "h":  443
+                                                          },
+                                                          {
+                                                              "name":  "response-right",
+                                                              "x":  887,
+                                                              "y":  444,
+                                                              "w":  443,
+                                                              "h":  443
+                                                          },
+                                                          {
+                                                              "name":  "response-back",
+                                                              "x":  1330,
+                                                              "y":  444,
+                                                              "w":  444,
+                                                              "h":  443
+                                                          }
+                                                      ]
+                                       },
+                        "mail-bird":  {
+                                          "source":  "/assets/mailxp/effects/mail-bird.png",
+                                          "atlas":  "/assets/mailxp/processed/mail-bird.json",
+                                          "grid":  "4 flap cols x 2 rows (right, left)",
+                                          "frames":  [
+                                                         {
+                                                             "name":  "right-0",
+                                                             "x":  0,
+                                                             "y":  0,
+                                                             "w":  444,
+                                                             "h":  444
+                                                         },
+                                                         {
+                                                             "name":  "right-1",
+                                                             "x":  444,
+                                                             "y":  0,
+                                                             "w":  443,
+                                                             "h":  444
+                                                         },
+                                                         {
+                                                             "name":  "right-2",
+                                                             "x":  887,
+                                                             "y":  0,
+                                                             "w":  443,
+                                                             "h":  444
+                                                         },
+                                                         {
+                                                             "name":  "right-3",
+                                                             "x":  1330,
+                                                             "y":  0,
+                                                             "w":  444,
+                                                             "h":  444
+                                                         },
+                                                         {
+                                                             "name":  "left-0",
+                                                             "x":  0,
+                                                             "y":  444,
+                                                             "w":  444,
+                                                             "h":  443
+                                                         },
+                                                         {
+                                                             "name":  "left-1",
+                                                             "x":  444,
+                                                             "y":  444,
+                                                             "w":  443,
+                                                             "h":  443
+                                                         },
+                                                         {
+                                                             "name":  "left-2",
+                                                             "x":  887,
+                                                             "y":  444,
+                                                             "w":  443,
+                                                             "h":  443
+                                                         },
+                                                         {
+                                                             "name":  "left-3",
+                                                             "x":  1330,
+                                                             "y":  444,
+                                                             "w":  444,
+                                                             "h":  443
+                                                         }
+                                                     ]
+                                      }
+                    },
+    "spritesheets":  {
+                         "worker":  {
+                                        "source":  "/assets/mailxp/characters/player/worker.png",
+                                        "frameWidth":  313,
+                                        "frameHeight":  313,
+                                        "columns":  4,
+                                        "rows":  4,
+                                        "rowsOrder":  [
+                                                          "down",
+                                                          "left",
+                                                          "right",
+                                                          "up"
+                                                      ],
+                                        "columnsOrder":  [
+                                                             "idle-a",
+                                                             "idle-b",
+                                                             "walk-a",
+                                                             "walk-b"
+                                                         ],
+                                        "frameIndex":  "directionRow * 4 + poseColumn"
+                                    },
+                         "worker-interact":  {
+                                                 "source":  "/assets/mailxp/characters/player/interact-directions.png",
+                                                 "frameWidth":  543,
+                                                 "frameHeight":  724,
+                                                 "frames":  [
+                                                                "down",
+                                                                "left",
+                                                                "right",
+                                                                "up"
+                                                            ]
+                                             }
+                     },
+    "tiles":  {
+                  "output":  "/assets/mailxp/processed/office-tiles-32.png",
+                  "tileSize":  32,
+                  "columns":  8,
+                  "sourceGrid":  {
+                                     "cols":  16,
+                                     "rows":  8,
+                                     "cellWidth":  110.875,
+                                     "cellHeight":  110.875
+                                 },
+                  "scaling":  "nearest-neighbor, content-bbox crop (falls back to full source cell)",
+                  "tiles":  [
+                                {
+                                    "name":  "carpet-forest",
+                                    "slot":  0,
+                                    "sourceCell":  {
+                                                       "col":  0,
+                                                       "row":  0
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  21,
+                                                       "y":  19,
+                                                       "w":  90,
+                                                       "h":  92
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  0,
+                                                       "y":  0,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "carpet-sage",
+                                    "slot":  1,
+                                    "sourceCell":  {
+                                                       "col":  1,
+                                                       "row":  0
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  111,
+                                                       "y":  19,
+                                                       "w":  111,
+                                                       "h":  92
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  32,
+                                                       "y":  0,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "carpet-cream",
+                                    "slot":  2,
+                                    "sourceCell":  {
+                                                       "col":  4,
+                                                       "row":  0
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  458,
+                                                       "y":  18,
+                                                       "w":  95,
+                                                       "h":  93
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  64,
+                                                       "y":  0,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "carpet-sand",
+                                    "slot":  3,
+                                    "sourceCell":  {
+                                                       "col":  5,
+                                                       "row":  0
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  567,
+                                                       "y":  18,
+                                                       "w":  96,
+                                                       "h":  93
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  96,
+                                                       "y":  0,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "wood-walnut",
+                                    "slot":  4,
+                                    "sourceCell":  {
+                                                       "col":  7,
+                                                       "row":  0
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  788,
+                                                       "y":  18,
+                                                       "w":  94,
+                                                       "h":  93
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  128,
+                                                       "y":  0,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "wood-oak",
+                                    "slot":  5,
+                                    "sourceCell":  {
+                                                       "col":  8,
+                                                       "row":  0
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  898,
+                                                       "y":  18,
+                                                       "w":  95,
+                                                       "h":  93
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  160,
+                                                       "y":  0,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "tile-white",
+                                    "slot":  6,
+                                    "sourceCell":  {
+                                                       "col":  10,
+                                                       "row":  0
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  1114,
+                                                       "y":  18,
+                                                       "w":  97,
+                                                       "h":  93
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  192,
+                                                       "y":  0,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "tile-grid",
+                                    "slot":  7,
+                                    "sourceCell":  {
+                                                       "col":  11,
+                                                       "row":  0
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  1224,
+                                                       "y":  18,
+                                                       "w":  96,
+                                                       "h":  93
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  224,
+                                                       "y":  0,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "rug-red",
+                                    "slot":  8,
+                                    "sourceCell":  {
+                                                       "col":  0,
+                                                       "row":  1
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  21,
+                                                       "y":  111,
+                                                       "w":  90,
+                                                       "h":  111
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  0,
+                                                       "y":  32,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "rug-check",
+                                    "slot":  9,
+                                    "sourceCell":  {
+                                                       "col":  2,
+                                                       "row":  1
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  222,
+                                                       "y":  111,
+                                                       "w":  111,
+                                                       "h":  111
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  32,
+                                                       "y":  32,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "rug-green",
+                                    "slot":  10,
+                                    "sourceCell":  {
+                                                       "col":  6,
+                                                       "row":  1
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  677,
+                                                       "y":  111,
+                                                       "w":  96,
+                                                       "h":  111
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  64,
+                                                       "y":  32,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "wall-top-teal",
+                                    "slot":  11,
+                                    "sourceCell":  {
+                                                       "col":  0,
+                                                       "row":  2
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  21,
+                                                       "y":  222,
+                                                       "w":  90,
+                                                       "h":  111
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  96,
+                                                       "y":  32,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "wall-top-cream",
+                                    "slot":  12,
+                                    "sourceCell":  {
+                                                       "col":  1,
+                                                       "row":  2
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  111,
+                                                       "y":  222,
+                                                       "w":  111,
+                                                       "h":  111
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  128,
+                                                       "y":  32,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "wall-top-panel",
+                                    "slot":  13,
+                                    "sourceCell":  {
+                                                       "col":  2,
+                                                       "row":  2
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  222,
+                                                       "y":  222,
+                                                       "w":  111,
+                                                       "h":  111
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  160,
+                                                       "y":  32,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "wall-top-plain",
+                                    "slot":  14,
+                                    "sourceCell":  {
+                                                       "col":  3,
+                                                       "row":  2
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  333,
+                                                       "y":  222,
+                                                       "w":  110,
+                                                       "h":  111
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  192,
+                                                       "y":  32,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "wall-base-teal",
+                                    "slot":  15,
+                                    "sourceCell":  {
+                                                       "col":  0,
+                                                       "row":  3
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  21,
+                                                       "y":  333,
+                                                       "w":  90,
+                                                       "h":  111
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  224,
+                                                       "y":  32,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "wall-base-cream",
+                                    "slot":  16,
+                                    "sourceCell":  {
+                                                       "col":  1,
+                                                       "row":  3
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  111,
+                                                       "y":  333,
+                                                       "w":  111,
+                                                       "h":  111
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  0,
+                                                       "y":  64,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "window-sill",
+                                    "slot":  17,
+                                    "sourceCell":  {
+                                                       "col":  7,
+                                                       "row":  3
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  776,
+                                                       "y":  333,
+                                                       "w":  108,
+                                                       "h":  111
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  32,
+                                                       "y":  64,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "door-teal",
+                                    "slot":  18,
+                                    "sourceCell":  {
+                                                       "col":  9,
+                                                       "row":  3
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  998,
+                                                       "y":  333,
+                                                       "w":  105,
+                                                       "h":  111
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  64,
+                                                       "y":  64,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "door-glass",
+                                    "slot":  19,
+                                    "sourceCell":  {
+                                                       "col":  10,
+                                                       "row":  3
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  1116,
+                                                       "y":  333,
+                                                       "w":  104,
+                                                       "h":  111
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  96,
+                                                       "y":  64,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "door-dark",
+                                    "slot":  20,
+                                    "sourceCell":  {
+                                                       "col":  11,
+                                                       "row":  3
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  1220,
+                                                       "y":  333,
+                                                       "w":  100,
+                                                       "h":  111
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  128,
+                                                       "y":  64,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "door-wood",
+                                    "slot":  21,
+                                    "sourceCell":  {
+                                                       "col":  12,
+                                                       "row":  3
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  1333,
+                                                       "y":  333,
+                                                       "w":  108,
+                                                       "h":  111
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  160,
+                                                       "y":  64,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "transition-teal",
+                                    "slot":  22,
+                                    "sourceCell":  {
+                                                       "col":  0,
+                                                       "row":  5
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  21,
+                                                       "y":  554,
+                                                       "w":  90,
+                                                       "h":  108
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  192,
+                                                       "y":  64,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "transition-wood",
+                                    "slot":  23,
+                                    "sourceCell":  {
+                                                       "col":  2,
+                                                       "row":  5
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  222,
+                                                       "y":  554,
+                                                       "w":  111,
+                                                       "h":  108
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  224,
+                                                       "y":  64,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "trim-teal",
+                                    "slot":  24,
+                                    "sourceCell":  {
+                                                       "col":  0,
+                                                       "row":  6
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  21,
+                                                       "y":  675,
+                                                       "w":  90,
+                                                       "h":  101
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  0,
+                                                       "y":  96,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                },
+                                {
+                                    "name":  "trim-tile",
+                                    "slot":  25,
+                                    "sourceCell":  {
+                                                       "col":  2,
+                                                       "row":  6
+                                                   },
+                                    "sourceRect":  {
+                                                       "x":  222,
+                                                       "y":  675,
+                                                       "w":  111,
+                                                       "h":  101
+                                                   },
+                                    "outputRect":  {
+                                                       "x":  32,
+                                                       "y":  96,
+                                                       "w":  32,
+                                                       "h":  32
+                                                   }
+                                }
+                            ]
+              }
+}

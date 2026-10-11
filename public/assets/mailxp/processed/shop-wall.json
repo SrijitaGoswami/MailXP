@@ -1,0 +1,256 @@
+{
+    "frames":  [
+                   {
+                       "filename":  "art-mountain",
+                       "frame":  {
+                                     "x":  36,
+                                     "y":  49,
+                                     "w":  326,
+                                     "h":  293
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  326,
+                                                "h":  293
+                                            },
+                       "sourceSize":  {
+                                          "w":  326,
+                                          "h":  293
+                                      }
+                   },
+                   {
+                       "filename":  "art-abstract",
+                       "frame":  {
+                                     "x":  362,
+                                     "y":  49,
+                                     "w":  328,
+                                     "h":  295
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  328,
+                                                "h":  295
+                                            },
+                       "sourceSize":  {
+                                          "w":  328,
+                                          "h":  295
+                                      }
+                   },
+                   {
+                       "filename":  "art-botanical",
+                       "frame":  {
+                                     "x":  763,
+                                     "y":  49,
+                                     "w":  262,
+                                     "h":  296
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  262,
+                                                "h":  296
+                                            },
+                       "sourceSize":  {
+                                          "w":  262,
+                                          "h":  296
+                                      }
+                   },
+                   {
+                       "filename":  "art-city",
+                       "frame":  {
+                                     "x":  1093,
+                                     "y":  66,
+                                     "w":  318,
+                                     "h":  272
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  318,
+                                                "h":  272
+                                            },
+                       "sourceSize":  {
+                                          "w":  318,
+                                          "h":  272
+                                      }
+                   },
+                   {
+                       "filename":  "plaque-shield",
+                       "frame":  {
+                                     "x":  77,
+                                     "y":  401,
+                                     "w":  246,
+                                     "h":  323
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  246,
+                                                "h":  323
+                                            },
+                       "sourceSize":  {
+                                          "w":  246,
+                                          "h":  323
+                                      }
+                   },
+                   {
+                       "filename":  "bulletin-board",
+                       "frame":  {
+                                     "x":  391,
+                                     "y":  413,
+                                     "w":  326,
+                                     "h":  311
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  326,
+                                                "h":  311
+                                            },
+                       "sourceSize":  {
+                                          "w":  326,
+                                          "h":  311
+                                      }
+                   },
+                   {
+                       "filename":  "clock-gold",
+                       "frame":  {
+                                     "x":  775,
+                                     "y":  371,
+                                     "w":  261,
+                                     "h":  333
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  261,
+                                                "h":  333
+                                            },
+                       "sourceSize":  {
+                                          "w":  261,
+                                          "h":  333
+                                      }
+                   },
+                   {
+                       "filename":  "clock-teal",
+                       "frame":  {
+                                     "x":  1126,
+                                     "y":  407,
+                                     "w":  261,
+                                     "h":  317
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  261,
+                                                "h":  317
+                                            },
+                       "sourceSize":  {
+                                          "w":  261,
+                                          "h":  317
+                                      }
+                   },
+                   {
+                       "filename":  "pennant",
+                       "frame":  {
+                                     "x":  81,
+                                     "y":  724,
+                                     "w":  231,
+                                     "h":  301
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  231,
+                                                "h":  301
+                                            },
+                       "sourceSize":  {
+                                          "w":  231,
+                                          "h":  301
+                                      }
+                   },
+                   {
+                       "filename":  "mirror-oval",
+                       "frame":  {
+                                     "x":  396,
+                                     "y":  724,
+                                     "w":  328,
+                                     "h":  301
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  328,
+                                                "h":  301
+                                            },
+                       "sourceSize":  {
+                                          "w":  328,
+                                          "h":  301
+                                      }
+                   },
+                   {
+                       "filename":  "mail-sorter",
+                       "frame":  {
+                                     "x":  724,
+                                     "y":  740,
+                                     "w":  362,
+                                     "h":  264
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  362,
+                                                "h":  264
+                                            },
+                       "sourceSize":  {
+                                          "w":  362,
+                                          "h":  264
+                                      }
+                   },
+                   {
+                       "filename":  "wall-sconce",
+                       "frame":  {
+                                     "x":  1086,
+                                     "y":  724,
+                                     "w":  309,
+                                     "h":  280
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  309,
+                                                "h":  280
+                                            },
+                       "sourceSize":  {
+                                          "w":  309,
+                                          "h":  280
+                                      }
+                   }
+               ]
+}

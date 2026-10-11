@@ -1,0 +1,172 @@
+{
+    "frames":  [
+                   {
+                       "filename":  "frame-abstract",
+                       "frame":  {
+                                     "x":  54,
+                                     "y":  580,
+                                     "w":  294,
+                                     "h":  356
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  294,
+                                                "h":  356
+                                            },
+                       "sourceSize":  {
+                                          "w":  294,
+                                          "h":  356
+                                      }
+                   },
+                   {
+                       "filename":  "trophy",
+                       "frame":  {
+                                     "x":  75,
+                                     "y":  165,
+                                     "w":  222,
+                                     "h":  356
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  222,
+                                                "h":  356
+                                            },
+                       "sourceSize":  {
+                                          "w":  222,
+                                          "h":  356
+                                      }
+                   },
+                   {
+                       "filename":  "rug-sage",
+                       "frame":  {
+                                     "x":  383,
+                                     "y":  605,
+                                     "w":  413,
+                                     "h":  328
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  413,
+                                                "h":  328
+                                            },
+                       "sourceSize":  {
+                                          "w":  413,
+                                          "h":  328
+                                      }
+                   },
+                   {
+                       "filename":  "desk-lamp",
+                       "frame":  {
+                                     "x":  407,
+                                     "y":  121,
+                                     "w":  314,
+                                     "h":  397
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  314,
+                                                "h":  397
+                                            },
+                       "sourceSize":  {
+                                          "w":  314,
+                                          "h":  397
+                                      }
+                   },
+                   {
+                       "filename":  "clock-pendulum",
+                       "frame":  {
+                                     "x":  831,
+                                     "y":  94,
+                                     "w":  269,
+                                     "h":  420
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  269,
+                                                "h":  420
+                                            },
+                       "sourceSize":  {
+                                          "w":  269,
+                                          "h":  420
+                                      }
+                   },
+                   {
+                       "filename":  "mug-cloud",
+                       "frame":  {
+                                     "x":  845,
+                                     "y":  626,
+                                     "w":  325,
+                                     "h":  297
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  325,
+                                                "h":  297
+                                            },
+                       "sourceSize":  {
+                                          "w":  325,
+                                          "h":  297
+                                      }
+                   },
+                   {
+                       "filename":  "potted-plant",
+                       "frame":  {
+                                     "x":  1199,
+                                     "y":  175,
+                                     "w":  300,
+                                     "h":  335
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  300,
+                                                "h":  335
+                                            },
+                       "sourceSize":  {
+                                          "w":  300,
+                                          "h":  335
+                                      }
+                   },
+                   {
+                       "filename":  "bird-figurine",
+                       "frame":  {
+                                     "x":  1226,
+                                     "y":  591,
+                                     "w":  257,
+                                     "h":  348
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  257,
+                                                "h":  348
+                                            },
+                       "sourceSize":  {
+                                          "w":  257,
+                                          "h":  348
+                                      }
+                   }
+               ]
+}

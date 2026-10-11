@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "OAuthState" ALTER COLUMN "userId" DROP NOT NULL,
+ALTER COLUMN "sessionId" DROP NOT NULL;

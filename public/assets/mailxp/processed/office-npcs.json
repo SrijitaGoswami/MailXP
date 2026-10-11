@@ -1,0 +1,340 @@
+{
+    "frames":  [
+                   {
+                       "filename":  "officer-down",
+                       "frame":  {
+                                     "x":  0,
+                                     "y":  0,
+                                     "w":  336,
+                                     "h":  360
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  336,
+                                                "h":  360
+                                            },
+                       "sourceSize":  {
+                                          "w":  336,
+                                          "h":  360
+                                      }
+                   },
+                   {
+                       "filename":  "agent-down",
+                       "frame":  {
+                                     "x":  336,
+                                     "y":  0,
+                                     "w":  303,
+                                     "h":  360
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  303,
+                                                "h":  360
+                                            },
+                       "sourceSize":  {
+                                          "w":  303,
+                                          "h":  360
+                                      }
+                   },
+                   {
+                       "filename":  "monkey-down",
+                       "frame":  {
+                                     "x":  639,
+                                     "y":  0,
+                                     "w":  319,
+                                     "h":  360
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  319,
+                                                "h":  360
+                                            },
+                       "sourceSize":  {
+                                          "w":  319,
+                                          "h":  360
+                                      }
+                   },
+                   {
+                       "filename":  "intern-down",
+                       "frame":  {
+                                     "x":  958,
+                                     "y":  0,
+                                     "w":  320,
+                                     "h":  360
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  320,
+                                                "h":  360
+                                            },
+                       "sourceSize":  {
+                                          "w":  320,
+                                          "h":  360
+                                      }
+                   },
+                   {
+                       "filename":  "officer-left",
+                       "frame":  {
+                                     "x":  0,
+                                     "y":  360,
+                                     "w":  336,
+                                     "h":  310
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  336,
+                                                "h":  310
+                                            },
+                       "sourceSize":  {
+                                          "w":  336,
+                                          "h":  310
+                                      }
+                   },
+                   {
+                       "filename":  "agent-left",
+                       "frame":  {
+                                     "x":  336,
+                                     "y":  360,
+                                     "w":  303,
+                                     "h":  310
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  303,
+                                                "h":  310
+                                            },
+                       "sourceSize":  {
+                                          "w":  303,
+                                          "h":  310
+                                      }
+                   },
+                   {
+                       "filename":  "monkey-left",
+                       "frame":  {
+                                     "x":  639,
+                                     "y":  360,
+                                     "w":  319,
+                                     "h":  310
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  319,
+                                                "h":  310
+                                            },
+                       "sourceSize":  {
+                                          "w":  319,
+                                          "h":  310
+                                      }
+                   },
+                   {
+                       "filename":  "intern-left",
+                       "frame":  {
+                                     "x":  958,
+                                     "y":  360,
+                                     "w":  320,
+                                     "h":  310
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  320,
+                                                "h":  310
+                                            },
+                       "sourceSize":  {
+                                          "w":  320,
+                                          "h":  310
+                                      }
+                   },
+                   {
+                       "filename":  "officer-right",
+                       "frame":  {
+                                     "x":  0,
+                                     "y":  670,
+                                     "w":  336,
+                                     "h":  288
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  336,
+                                                "h":  288
+                                            },
+                       "sourceSize":  {
+                                          "w":  336,
+                                          "h":  288
+                                      }
+                   },
+                   {
+                       "filename":  "agent-right",
+                       "frame":  {
+                                     "x":  336,
+                                     "y":  670,
+                                     "w":  303,
+                                     "h":  288
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  303,
+                                                "h":  288
+                                            },
+                       "sourceSize":  {
+                                          "w":  303,
+                                          "h":  288
+                                      }
+                   },
+                   {
+                       "filename":  "monkey-right",
+                       "frame":  {
+                                     "x":  639,
+                                     "y":  670,
+                                     "w":  319,
+                                     "h":  288
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  319,
+                                                "h":  288
+                                            },
+                       "sourceSize":  {
+                                          "w":  319,
+                                          "h":  288
+                                      }
+                   },
+                   {
+                       "filename":  "intern-right",
+                       "frame":  {
+                                     "x":  958,
+                                     "y":  670,
+                                     "w":  320,
+                                     "h":  288
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  320,
+                                                "h":  288
+                                            },
+                       "sourceSize":  {
+                                          "w":  320,
+                                          "h":  288
+                                      }
+                   },
+                   {
+                       "filename":  "officer-up",
+                       "frame":  {
+                                     "x":  0,
+                                     "y":  958,
+                                     "w":  336,
+                                     "h":  272
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  336,
+                                                "h":  272
+                                            },
+                       "sourceSize":  {
+                                          "w":  336,
+                                          "h":  272
+                                      }
+                   },
+                   {
+                       "filename":  "agent-up",
+                       "frame":  {
+                                     "x":  336,
+                                     "y":  958,
+                                     "w":  303,
+                                     "h":  272
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  303,
+                                                "h":  272
+                                            },
+                       "sourceSize":  {
+                                          "w":  303,
+                                          "h":  272
+                                      }
+                   },
+                   {
+                       "filename":  "monkey-up",
+                       "frame":  {
+                                     "x":  639,
+                                     "y":  958,
+                                     "w":  319,
+                                     "h":  272
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  319,
+                                                "h":  272
+                                            },
+                       "sourceSize":  {
+                                          "w":  319,
+                                          "h":  272
+                                      }
+                   },
+                   {
+                       "filename":  "intern-up",
+                       "frame":  {
+                                     "x":  958,
+                                     "y":  958,
+                                     "w":  320,
+                                     "h":  272
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  320,
+                                                "h":  272
+                                            },
+                       "sourceSize":  {
+                                          "w":  320,
+                                          "h":  272
+                                      }
+                   }
+               ]
+}

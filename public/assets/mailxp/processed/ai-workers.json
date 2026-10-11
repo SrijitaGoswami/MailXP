@@ -1,0 +1,172 @@
+{
+    "frames":  [
+                   {
+                       "filename":  "understanding-front",
+                       "frame":  {
+                                     "x":  0,
+                                     "y":  0,
+                                     "w":  444,
+                                     "h":  444
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  444,
+                                                "h":  444
+                                            },
+                       "sourceSize":  {
+                                          "w":  444,
+                                          "h":  444
+                                      }
+                   },
+                   {
+                       "filename":  "understanding-left",
+                       "frame":  {
+                                     "x":  444,
+                                     "y":  0,
+                                     "w":  443,
+                                     "h":  444
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  443,
+                                                "h":  444
+                                            },
+                       "sourceSize":  {
+                                          "w":  443,
+                                          "h":  444
+                                      }
+                   },
+                   {
+                       "filename":  "understanding-right",
+                       "frame":  {
+                                     "x":  887,
+                                     "y":  0,
+                                     "w":  443,
+                                     "h":  444
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  443,
+                                                "h":  444
+                                            },
+                       "sourceSize":  {
+                                          "w":  443,
+                                          "h":  444
+                                      }
+                   },
+                   {
+                       "filename":  "understanding-back",
+                       "frame":  {
+                                     "x":  1330,
+                                     "y":  0,
+                                     "w":  444,
+                                     "h":  444
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  444,
+                                                "h":  444
+                                            },
+                       "sourceSize":  {
+                                          "w":  444,
+                                          "h":  444
+                                      }
+                   },
+                   {
+                       "filename":  "response-front",
+                       "frame":  {
+                                     "x":  0,
+                                     "y":  444,
+                                     "w":  444,
+                                     "h":  443
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  444,
+                                                "h":  443
+                                            },
+                       "sourceSize":  {
+                                          "w":  444,
+                                          "h":  443
+                                      }
+                   },
+                   {
+                       "filename":  "response-left",
+                       "frame":  {
+                                     "x":  444,
+                                     "y":  444,
+                                     "w":  443,
+                                     "h":  443
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  443,
+                                                "h":  443
+                                            },
+                       "sourceSize":  {
+                                          "w":  443,
+                                          "h":  443
+                                      }
+                   },
+                   {
+                       "filename":  "response-right",
+                       "frame":  {
+                                     "x":  887,
+                                     "y":  444,
+                                     "w":  443,
+                                     "h":  443
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  443,
+                                                "h":  443
+                                            },
+                       "sourceSize":  {
+                                          "w":  443,
+                                          "h":  443
+                                      }
+                   },
+                   {
+                       "filename":  "response-back",
+                       "frame":  {
+                                     "x":  1330,
+                                     "y":  444,
+                                     "w":  444,
+                                     "h":  443
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  444,
+                                                "h":  443
+                                            },
+                       "sourceSize":  {
+                                          "w":  444,
+                                          "h":  443
+                                      }
+                   }
+               ]
+}

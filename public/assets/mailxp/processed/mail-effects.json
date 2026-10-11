@@ -1,0 +1,298 @@
+{
+    "frames":  [
+                   {
+                       "filename":  "mail-closed",
+                       "frame":  {
+                                     "x":  49,
+                                     "y":  131,
+                                     "w":  210,
+                                     "h":  240
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  210,
+                                                "h":  240
+                                            },
+                       "sourceSize":  {
+                                          "w":  210,
+                                          "h":  240
+                                      }
+                   },
+                   {
+                       "filename":  "mail-open",
+                       "frame":  {
+                                     "x":  293,
+                                     "y":  131,
+                                     "w":  204,
+                                     "h":  240
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  204,
+                                                "h":  240
+                                            },
+                       "sourceSize":  {
+                                          "w":  204,
+                                          "h":  240
+                                      }
+                   },
+                   {
+                       "filename":  "letter",
+                       "frame":  {
+                                     "x":  542,
+                                     "y":  131,
+                                     "w":  174,
+                                     "h":  240
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  174,
+                                                "h":  240
+                                            },
+                       "sourceSize":  {
+                                          "w":  174,
+                                          "h":  240
+                                      }
+                   },
+                   {
+                       "filename":  "mail-sealed",
+                       "frame":  {
+                                     "x":  753,
+                                     "y":  131,
+                                     "w":  212,
+                                     "h":  240
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  212,
+                                                "h":  240
+                                            },
+                       "sourceSize":  {
+                                          "w":  212,
+                                          "h":  240
+                                      }
+                   },
+                   {
+                       "filename":  "parcel",
+                       "frame":  {
+                                     "x":  997,
+                                     "y":  131,
+                                     "w":  202,
+                                     "h":  240
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  202,
+                                                "h":  240
+                                            },
+                       "sourceSize":  {
+                                          "w":  202,
+                                          "h":  240
+                                      }
+                   },
+                   {
+                       "filename":  "package",
+                       "frame":  {
+                                     "x":  1223,
+                                     "y":  131,
+                                     "w":  264,
+                                     "h":  240
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  264,
+                                                "h":  240
+                                            },
+                       "sourceSize":  {
+                                          "w":  264,
+                                          "h":  240
+                                      }
+                   },
+                   {
+                       "filename":  "draftcoin",
+                       "frame":  {
+                                     "x":  400,
+                                     "y":  400,
+                                     "w":  196,
+                                     "h":  208
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  196,
+                                                "h":  208
+                                            },
+                       "sourceSize":  {
+                                          "w":  196,
+                                          "h":  208
+                                      }
+                   },
+                   {
+                       "filename":  "reward-token",
+                       "frame":  {
+                                     "x":  655,
+                                     "y":  400,
+                                     "w":  190,
+                                     "h":  208
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  190,
+                                                "h":  208
+                                            },
+                       "sourceSize":  {
+                                          "w":  190,
+                                          "h":  208
+                                      }
+                   },
+                   {
+                       "filename":  "sparkle",
+                       "frame":  {
+                                     "x":  911,
+                                     "y":  400,
+                                     "w":  188,
+                                     "h":  208
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  188,
+                                                "h":  208
+                                            },
+                       "sourceSize":  {
+                                          "w":  188,
+                                          "h":  208
+                                      }
+                   },
+                   {
+                       "filename":  "pickup-burst",
+                       "frame":  {
+                                     "x":  64,
+                                     "y":  620,
+                                     "w":  198,
+                                     "h":  308
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  198,
+                                                "h":  308
+                                            },
+                       "sourceSize":  {
+                                          "w":  198,
+                                          "h":  308
+                                      }
+                   },
+                   {
+                       "filename":  "interaction-ring",
+                       "frame":  {
+                                     "x":  303,
+                                     "y":  620,
+                                     "w":  249,
+                                     "h":  308
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  249,
+                                                "h":  308
+                                            },
+                       "sourceSize":  {
+                                          "w":  249,
+                                          "h":  308
+                                      }
+                   },
+                   {
+                       "filename":  "coin-burst",
+                       "frame":  {
+                                     "x":  622,
+                                     "y":  620,
+                                     "w":  247,
+                                     "h":  308
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  247,
+                                                "h":  308
+                                            },
+                       "sourceSize":  {
+                                          "w":  247,
+                                          "h":  308
+                                      }
+                   },
+                   {
+                       "filename":  "quest-burst",
+                       "frame":  {
+                                     "x":  924,
+                                     "y":  620,
+                                     "w":  249,
+                                     "h":  308
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  249,
+                                                "h":  308
+                                            },
+                       "sourceSize":  {
+                                          "w":  249,
+                                          "h":  308
+                                      }
+                   },
+                   {
+                       "filename":  "levelup-burst",
+                       "frame":  {
+                                     "x":  1226,
+                                     "y":  620,
+                                     "w":  265,
+                                     "h":  308
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  265,
+                                                "h":  308
+                                            },
+                       "sourceSize":  {
+                                          "w":  265,
+                                          "h":  308
+                                      }
+                   }
+               ]
+}

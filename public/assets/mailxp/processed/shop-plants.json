@@ -1,0 +1,256 @@
+{
+    "frames":  [
+                   {
+                       "filename":  "plant-fiddle",
+                       "frame":  {
+                                     "x":  65,
+                                     "y":  19,
+                                     "w":  313,
+                                     "h":  434
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  313,
+                                                "h":  434
+                                            },
+                       "sourceSize":  {
+                                          "w":  313,
+                                          "h":  434
+                                      }
+                   },
+                   {
+                       "filename":  "plant-hanging",
+                       "frame":  {
+                                     "x":  780,
+                                     "y":  7,
+                                     "w":  290,
+                                     "h":  464
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  290,
+                                                "h":  464
+                                            },
+                       "sourceSize":  {
+                                          "w":  290,
+                                          "h":  464
+                                      }
+                   },
+                   {
+                       "filename":  "plant-monstera",
+                       "frame":  {
+                                     "x":  423,
+                                     "y":  130,
+                                     "w":  294,
+                                     "h":  322
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  294,
+                                                "h":  322
+                                            },
+                       "sourceSize":  {
+                                          "w":  294,
+                                          "h":  322
+                                      }
+                   },
+                   {
+                       "filename":  "succulents-tray",
+                       "frame":  {
+                                     "x":  1113,
+                                     "y":  227,
+                                     "w":  287,
+                                     "h":  214
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  287,
+                                                "h":  214
+                                            },
+                       "sourceSize":  {
+                                          "w":  287,
+                                          "h":  214
+                                      }
+                   },
+                   {
+                       "filename":  "plant-bamboo",
+                       "frame":  {
+                                     "x":  411,
+                                     "y":  447,
+                                     "w":  231,
+                                     "h":  359
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  231,
+                                                "h":  359
+                                            },
+                       "sourceSize":  {
+                                          "w":  231,
+                                          "h":  359
+                                      }
+                   },
+                   {
+                       "filename":  "orchid",
+                       "frame":  {
+                                     "x":  42,
+                                     "y":  461,
+                                     "w":  274,
+                                     "h":  339
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  274,
+                                                "h":  339
+                                            },
+                       "sourceSize":  {
+                                          "w":  274,
+                                          "h":  339
+                                      }
+                   },
+                   {
+                       "filename":  "rug-round",
+                       "frame":  {
+                                     "x":  682,
+                                     "y":  525,
+                                     "w":  330,
+                                     "h":  240
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  330,
+                                                "h":  240
+                                            },
+                       "sourceSize":  {
+                                          "w":  330,
+                                          "h":  240
+                                      }
+                   },
+                   {
+                       "filename":  "rug-runner",
+                       "frame":  {
+                                     "x":  1033,
+                                     "y":  542,
+                                     "w":  401,
+                                     "h":  218
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  401,
+                                                "h":  218
+                                            },
+                       "sourceSize":  {
+                                          "w":  401,
+                                          "h":  218
+                                      }
+                   },
+                   {
+                       "filename":  "umbrella-stand",
+                       "frame":  {
+                                     "x":  829,
+                                     "y":  768,
+                                     "w":  133,
+                                     "h":  284
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  133,
+                                                "h":  284
+                                            },
+                       "sourceSize":  {
+                                          "w":  133,
+                                          "h":  284
+                                      }
+                   },
+                   {
+                       "filename":  "rug-oval",
+                       "frame":  {
+                                     "x":  28,
+                                     "y":  823,
+                                     "w":  381,
+                                     "h":  220
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  381,
+                                                "h":  220
+                                            },
+                       "sourceSize":  {
+                                          "w":  381,
+                                          "h":  220
+                                      }
+                   },
+                   {
+                       "filename":  "floor-cushions",
+                       "frame":  {
+                                     "x":  437,
+                                     "y":  828,
+                                     "w":  336,
+                                     "h":  224
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  336,
+                                                "h":  224
+                                            },
+                       "sourceSize":  {
+                                          "w":  336,
+                                          "h":  224
+                                      }
+                   },
+                   {
+                       "filename":  "boot-tray",
+                       "frame":  {
+                                     "x":  1043,
+                                     "y":  829,
+                                     "w":  371,
+                                     "h":  223
+                                 },
+                       "rotated":  false,
+                       "trimmed":  false,
+                       "spriteSourceSize":  {
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  371,
+                                                "h":  223
+                                            },
+                       "sourceSize":  {
+                                          "w":  371,
+                                          "h":  223
+                                      }
+                   }
+               ]
+}
