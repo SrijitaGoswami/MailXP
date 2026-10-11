@@ -1,0 +1,552 @@
+// MailXP — Prisma data contract (Phase B2)
+// First-release foundation only: identity (User), sessions (Session), and the
+// server-owned game profile (PlayerProfile + InventoryItem). Gmail, Gemini,
+// Calendar, wallet, ledger, jobs and notification tables deliberately wait for
+// their own phases (B6–B14) — see docs/BACKEND_PHASE_PLAN.md.
+//
+// JSON-vs-relational decisions (documented per phase_b2.md §3A):
+// - ownedItems  -> relational table (InventoryItem) because B6 purchases need a
+//                  database-level uniqueness guarantee per (profile, item) as
+//                  defense-in-depth for idempotent grants.
+// - placedDecor -> JSONB on the profile because the app reads/writes the whole
+//                  array atomically (placement order matters, no per-row queries).
+// - prefs       -> JSONB with a strict application-side whitelist (the six keys
+//                  in game/profile.ts Preferences); values validated before write.
+// - stats (xp/level/mailCount) -> modeled at B5 (user decision at B2 was
+//                  "ephemeral until B5"): xp/level columns + a stats JSONB
+//                  bucket defaulting to {"mailCount":0}, matching the
+//                  contract's game.state shape. No B5 route writes XP —
+//                  awards start at B6 — so the columns simply hold the
+//                  authoritative zeros/defaults until then.
+// Secrets, raw session tokens, email bodies and provider payloads are never
+// stored in profile JSON (session tokens live hashed in Session.tokenHash).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id                 String    @id @default(uuid(7))
+  email              String    @unique
+  passwordHash       String
+  emailVerifiedAt    DateTime?
+  deletionRequestedAt DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  sessions           Session[]
+  profile            PlayerProfile?
+  tokens             AuthToken[]
+  auditEvents        AuditEvent[]
+  googleConnections  GoogleConnection[] // B8
+  oauthStates        OAuthState[] // B8
+}
+
+model Session {
+  id         String    @id @default(uuid(7))
+  tokenHash  String    @unique
+  userId     String
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt  DateTime  @default(now())
+  lastSeenAt DateTime  @default(now())
+  expiresAt  DateTime
+  revokedAt  DateTime?
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model PlayerProfile {
+  id             String          @id @default(uuid(7))
+  userId         String          @unique
+  user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  draftCoin      Int             @default(0)
+  xp             Int             @default(0)
+  level          Int             @default(1)
+  stats          Json            @default("{\"mailCount\":0}")
+  equippedOutfit String          @default("worker")
+  placedDecor    Json            @default("[]")
+  prefs          Json
+  version        Int             @default(1)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  inventoryItems InventoryItem[]
+  ledgerEntries  LedgerEntry[]
+  idempotencyRecords IdempotencyRecord[]
+  emailAnalyses  EmailAnalysis[] // B10
+  aiUsage        AiDailyUsage[] // B10
+  aiSettings     AiSettings? // B10
+}
+
+model InventoryItem {
+  profileId  String
+  itemId     String
+  ownedSince DateTime @default(now())
+  profile    PlayerProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@id([profileId, itemId])
+  @@index([itemId])
+}
+
+// ---- Phase B4: authentication + account lifecycle --------------------------
+// AuthToken: single purpose-scoped token table for email verification (24 h)
+// and password reset (1 h). Only SHA-256 hashes of high-entropy random tokens
+// are stored — raw tokens exist solely in the dispatch path (dev-mode
+// surfacing) and never in the database, logs, or production responses.
+// Consumption is atomic (consumedAt set via guarded update) so a token can be
+// redeemed exactly once; outstanding superseded tokens are marked consumed
+// when a new one is issued.
+
+enum TokenPurpose {
+  EMAIL_VERIFICATION
+  PASSWORD_RESET
+}
+
+model AuthToken {
+  id         String       @id @default(uuid(7))
+  userId     String
+  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  purpose    TokenPurpose
+  tokenHash  String       @unique
+  expiresAt  DateTime
+  consumedAt DateTime?
+  createdAt  DateTime     @default(now())
+
+  @@index([userId, purpose])
+  @@index([expiresAt])
+}
+
+// AuditEvent: durable auth/security records mandated by the B1 contract
+// (side effect "audit auth.<event>" on every auth route) and by
+// MASTER_REQUIREMENTS §19. Rows carry NO email content, addresses, passwords,
+// tokens, or IP addresses — only the event type, the acting user (nullable;
+// SetNull so rows survive as non-personal tombstones after eventual account
+// deletion), the correlation requestId, and a minimal JSON meta bucket that
+// goes through the same secret-key redaction as the logger.
+
+model AuditEvent {
+  id        String   @id @default(uuid(7))
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  eventType String
+  requestId String
+  meta      Json?
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([eventType, createdAt])
+}
+
+// ---- Phase B5: economy ledger (reads only; writes belong to B6) ------------
+// The user approved creating this table at B5 so GET /game/ledger does REAL
+// cursor-paginated reads against the contract's exact item shape instead of
+// faking an empty response (phase_b5.md §4/§8 + stop-condition resolution).
+// B5 writes NO rows: quest rewards and purchases start at B6, which also sets
+// amounts/prices/daily-cap server-side. Amount is signed (credits positive,
+// purchases negative); sourceRef links back to the issuing event (e.g. a B6
+// reward or purchase id) and never carries provider content.
+
+enum LedgerType {
+  quest_reward
+  purchase
+  adjustment
+}
+
+model LedgerEntry {
+  id        String     @id @default(uuid(7))
+  profileId String
+  profile   PlayerProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  type      LedgerType
+  amount    Int
+  reason    String
+  sourceRef String?
+  createdAt DateTime   @default(now())
+
+  // Contract §1.5 ordering: createdAt DESC with id DESC tie-break.
+  @@index([profileId, createdAt(sort: Desc), id(sort: Desc)])
+}
+
+// ---- Phase B6: durable idempotency for economy mutations -------------------
+// shop.purchase REQUIRES an Idempotency-Key header (contract §1.6). The key,
+// endpoint and request fingerprint (hash of path+body) are stored with the
+// outcome so that: same player+key+same request replays the stored result,
+// same key+different request conflicts (409 IDEMPOTENCY_MISMATCH), and a
+// concurrent retry collides on @@unique([profileId, endpoint, key]) — the
+// DATABASE-level guard, so two racing requests can never both start a
+// purchase. Rows are retained for 24 h (contract §1.6) and replaced after
+// expiry. `status` is "in_progress" (reservation) or "completed" (2xx outcome
+// stored for replay); failed attempts delete their reservation so an honest
+// retry can re-execute (documented in B6_REPORT.md §6).
+
+model IdempotencyRecord {
+  id          String        @id @default(uuid(7))
+  profileId   String
+  profile     PlayerProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  endpoint    String
+  key         String
+  fingerprint String
+  status      String // "in_progress" | "completed"
+  httpStatus  Int?
+  summary     Json?
+  createdAt   DateTime      @default(now())
+  expiresAt   DateTime
+
+  @@unique([profileId, endpoint, key])
+  @@index([expiresAt])
+}
+
+// ---- Phase B7: durable asynchronous work -----------------------------------
+// Transactional outbox + database-backed job queue + in-process development
+// worker (phase_b7.md §4–§6; queue decision recorded at B0 in
+// BACKEND_ARCHITECTURE.md §6). Two tables with distinct jobs:
+//
+// OutboxEvent — an outbox row is written in the SAME database transaction as
+// the domain change it represents (e.g. User.deletionRequestedAt set by
+// me.delete), so a committed domain change can never exist without its event
+// and a rolled-back change never leaves an orphan event. A relay converts
+// pending events into Job rows idempotently (Job.outboxEventId is unique), so
+// a crash between "job created" and "event marked published" re-runs safely.
+//
+// Job — the work queue. Claim is a conditional UPDATE (status/lease guards),
+// so competing claims cannot hold the same job; an expired lease (crashed
+// worker) is reclaimable. Handlers must be idempotent: at-least-once delivery
+// is the contract (phase_b7.md §5). `dedupeKey` is unique so e.g. only one
+// live deletion job exists per account; a dead job is retried by updating it
+// in place (requeue), never by inserting a second row.
+//
+// `jobType`/`eventType` are plain strings validated against an in-code
+// registry: unknown values must FAIL SAFELY into the dead-letter state
+// (phase_b7.md §5) rather than execute, and new job types in later phases
+// (B9 sync, B10 analysis) need no enum migration. Payloads carry internal
+// identifiers only — no passwords, tokens, cookies, or email content — and
+// are never logged (logger.ts redaction policy).
+
+enum OutboxStatus {
+  pending
+  published
+  dead
+}
+
+model OutboxEvent {
+  id             String       @id @default(uuid(7))
+  eventType      String // e.g. "account.deletion_requested" (registry-validated)
+  eventVersion   Int          @default(1)
+  payload        Json? // minimal validated payload; internal ids only
+  status         OutboxStatus @default(pending)
+  attempts       Int          @default(0)
+  nextAttemptAt  DateTime     @default(now())
+  lastErrorClass String? // safe category label, never a raw error message
+  createdAt      DateTime     @default(now())
+  publishedAt    DateTime?
+
+  @@index([status, nextAttemptAt])
+}
+
+enum JobStatus {
+  pending // waiting for availableAt / not yet claimed
+  running // leased by a worker (leaseExpiresAt guards crash recovery)
+  succeeded // handler completed
+  dead // terminal: attempts exhausted, permanent failure, or unknown type
+}
+
+model Job {
+  id             String    @id @default(uuid(7))
+  jobType        String // registry-validated; unknown -> dead (fail safe)
+  payload        Json? // handler-validated; null once succeeded-and-purged? (kept: internal ids only)
+  status         JobStatus @default(pending)
+  dedupeKey      String?   @unique // e.g. "account.deletion:<userId>" — one row per key ever; requeue updates in place
+  outboxEventId  String?   @unique // relay idempotency: one job per outbox event
+  attempts       Int       @default(0)
+  maxAttempts    Int       @default(5)
+  availableAt    DateTime  @default(now()) // oldest-first claim ordering (player-facing delay)
+  leaseExpiresAt DateTime? // claimed worker's lease; expired lease = reclaimable
+  leaseOwner     String?
+  startedAt      DateTime?
+  finishedAt     DateTime?
+  lastErrorClass String? // safe category (e.g. "validation", "db"), never raw messages
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([status, availableAt])
+  @@index([status, leaseExpiresAt])
+  @@index([jobType, status])
+}
+
+// ---- Phase B8: Google OAuth connection + encrypted credential storage -------
+// phase_b8.md §6–§7. Two tables, no changes to any B0–B7 table beyond the two
+// relation fields added to User above (purely additive migration).
+//
+// GoogleConnection — one row per linked Google identity (a player may hold
+// several: MASTER §4.2 allows multiple Gmail accounts per player).
+//   - `googleSub` is Google's stable subject identifier and is UNIQUE, so one
+//     Google identity can never be linked to two MailXP players at the same
+//     time (contract §7.1 "one Gmail mailbox = one active player"; MASTER §3.2).
+//     Transfer happens only through the explicit `release` flow: a released
+//     row may be re-claimed by a different player's fresh OAuth consent.
+//   - Token material is sealed with AES-256-GCM (lib/server/secretBox.ts):
+//     ciphertext + nonce + auth tag as base64, plus the key version. The key
+//     lives ONLY in the GOOGLE_TOKEN_ENCRYPTION_KEY env var — never in this
+//     table, never in code, never in logs (spec §6: fail closed, no plaintext
+//     fallback, no committed default).
+//   - Only the REFRESH token is persisted (spec §6: "persist refresh tokens
+//     only when provided and needed; store access tokens only if required" —
+//     B8 performs no Gmail API calls, so no access token is required). B9
+//     exchanges the refresh token for access tokens when sync begins.
+//   - `scopes` records what Google ACTUALLY granted (never assumed from the
+//     request; spec §6.5).
+//
+// OAuthState — CSRF/linking state for the authorization-code flow (spec §4).
+//   - Only the SHA-256 HASH of the state value is stored (spec §4.2); the raw
+//     value exists solely in the browser round-trip to Google.
+//   - Link/reconnect states are bound to the initiating user AND session
+//     (B8); B8a adds unbound `signin` states (userId/sessionId NULL) for the
+//     signed-out "Continue with Google" entrance — the 256-bit random state
+//     itself is the CSRF defense there, consumed at most once via a guarded
+//     update (atomic single-use, same pattern as AuthToken). 10-minute expiry.
+//     Account erasure deletes both tables' rows explicitly (B7 deletion.ts
+//     updated) in addition to the ON DELETE Cascade here.
+
+enum GoogleConnectionStatus {
+  connected
+  released
+}
+
+model GoogleConnection {
+  id        String                @id @default(uuid(7))
+  userId    String
+  user      User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  googleSub String                @unique // one identity → one player, ever
+  email     String // verified provider email at link time (never guessed)
+  status    GoogleConnectionStatus @default(connected)
+  scopes    String @default("") // space-separated granted scopes, as returned by Google
+
+  // Sealed refresh token (AES-256-GCM, base64 parts) — nullable because a
+  // consent can legitimately return no refresh token; disconnect deletes the
+  // row, release wipes these columns in place.
+  refreshTokenCipher    String?
+  refreshTokenNonce     String?
+  refreshTokenTag       String?
+  refreshTokenKeyVersion Int          @default(1)
+
+  connectedAt DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // B9: the synced mailbox for this connection. Cascade so disconnect (row
+  // delete) and account deletion remove messages + sync state automatically;
+  // release deletes them explicitly in the release route (in-place update).
+  messages      GmailMessage[]
+  syncState     GmailSyncState?
+
+  @@index([userId])
+  // B8b DRIFT NOTE (reviewed raw SQL, not expressible in the datamodel):
+  // migration 20261010201518_b8b_one_gmail_per_user additionally creates the
+  // partial unique index "GoogleConnection_userId_connected_key" on (userId)
+  // WHERE status = 'connected' — at most ONE connected mailbox per user.
+  // `prisma migrate diff` will always report this index as missing from the
+  // datamodel; that is expected drift, not a bug. The invariant is enforced
+  // in PostgreSQL and covered by tests. googleSub stays @@unique above
+  // (one Google identity -> one user, ever).
+}
+
+model OAuthState {
+  id         String    @id @default(uuid(7))
+  stateHash  String    @unique // sha256(raw state); raw value never stored
+  userId     String? // NULL for the B8a "signin" intent (unbound visitor)
+  user       User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sessionId  String? // initiating session binding (spec §4.2); NULL for "signin"
+  intent     String // "connect" | "reconnect:<accountId>" | "signin" (B8a)
+  consumedAt DateTime? // guarded single-use claim
+  expiresAt  DateTime // created + 10 minutes (spec §4.2)
+  createdAt  DateTime  @default(now())
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+// ---- Phase B9: real Gmail sync (messages + cursor state) -------------------
+// phase_b9.md §8. Purely additive: two new tables, no changes to any B0–B8b
+// table. GoogleConnection is untouched except a new back-relation; the B8b
+// partial unique index (one connected mailbox per user) is preserved as raw
+// SQL and is NOT affected by this migration.
+//
+// Retention (user decision 2026-10-11, B9 question round): disconnect deletes
+// the GoogleConnection ROW → ON DELETE Cascade removes that mailbox's messages
+// + sync state. Release keeps the connection row (status=released) but WIPES
+// the refresh-token columns in place AND deletes its messages + sync state
+// (explicitly in the release route — Cascade can't fire on an in-place row
+// update). Account deletion cascades User → GoogleConnection → messages/sync.
+// Only non-personal sync state (cursor/status/error class) survives as needed;
+// message bodies/senders/subjects never outlive the connection.
+//
+// GmailMessage stores MINIMAL personal content: sender, subject, snippet, the
+// plain-text body (text/plain only — HTML is never rendered or stored, spec
+// §5), unread flag, label ids, and attachment METADATA (never bytes, spec §5).
+// Raw provider payloads, access/refresh tokens, and HTML are never persisted.
+
+model GmailMessage {
+  id                 String          @id @default(uuid(7))
+  googleConnectionId String
+  googleConnection   GoogleConnection @relation(fields: [googleConnectionId], references: [id], onDelete: Cascade)
+  gmailMessageId     String // Gmail's stable message id
+  gmailThreadId      String? // for threading in the inbox
+  internalDate       DateTime // provider receive time (UTC)
+  sender             String // From header (display-safe)
+  subject            String? // Subject header
+  snippet            String? // provider snippet (plain text)
+  bodyText           String? // text/plain ONLY (never HTML; spec §5)
+  isUnread           Boolean         @default(true)
+  labels             Json @default("[]") // label ids (array of strings), as permitted
+  attachments        Json @default("[]") // metadata only: [{filename,mimeType,size}] — never bytes
+  syncedAt           DateTime        @default(now())
+
+  // External identity is (owning connection, Gmail message id) — idempotent
+  // upsert target (spec §5) so re-sync / duplicate pushes never duplicate rows.
+  @@unique([googleConnectionId, gmailMessageId])
+  // Inbox reads: newest-first per mailbox, unread filter, thread lookup.
+  @@index([googleConnectionId, internalDate(sort: Desc)])
+  @@index([googleConnectionId, isUnread])
+  @@index([gmailThreadId])
+
+  // B10: at most one CURRENT analysis row per message (cascade removes it
+  // with the message on disconnect/release/erasure).
+  analyses EmailAnalysis[]
+}
+
+enum GmailSyncStatus {
+  pending // queued, not yet run
+  running // a job holds the lease and is fetching
+  synced // last sync committed successfully
+  delayed // backed off / reconciliation scheduled, not an error
+  reconnect_required // refresh token revoked/invalid/missing scope — needs a human
+  error // transient provider/db failure after retries
+}
+
+model GmailSyncState {
+  id                 String          @id @default(uuid(7))
+  googleConnectionId String          @unique // exactly one sync state per mailbox
+  googleConnection   GoogleConnection @relation(fields: [googleConnectionId], references: [id], onDelete: Cascade)
+  status             GmailSyncStatus  @default(pending)
+  historyId          String? // Gmail history cursor — advanced ONLY after a durable commit (spec §6)
+  historyWindowDays  Int             @default(30) // user-approved window (7/30/90/all); default 30
+  lastSyncedAt       DateTime? // last time a sync job ran (any outcome)
+  lastSuccessAt      DateTime? // last COMMITSYNC — cursor advanced
+  nextReconcileAt    DateTime? // scheduled reconciliation (missed-push recovery, spec §6)
+  lastErrorClass     String? // safe category (e.g. "provider", "timeout"), never raw payloads
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+}
+
+// ---- Phase B10: Gemini AI email intelligence (advisory only) ---------------
+// docs/phase_b10.md. Purely additive: three new tables, no changes to any
+// B0–B9 table beyond the back-relations above. AI output is ADVISORY: B10
+// never sends/drafts email, never mutates Gmail, never awards DraftCoin.
+//
+// EmailAnalysis — ONE row per message holding the CURRENT analysis (spec §3.3:
+// a stale fingerprint is re-analyzed, not kept as a second live row; storage
+// minimization per MASTER §4.3 — no duplicate bodies, no raw provider
+// payloads, no chain-of-thought). Idempotency target is (message, content
+// fingerprint, schema+model version): a redelivered job with a matching
+// ready/limited row is a no-op and consumes no usage unit.
+//   - `googleConnectionId` is denormalized from the owning message purely so
+//     disconnect/release/erasure can wipe analysis with one indexed
+//     deleteMany (and stay observable under the test fake, which has no FK
+//     cascade engine). The authoritative link is `gmailMessageId`.
+//   - `usageConsumed` records that this analysis already reserved its daily
+//     unit, so a retried job never double-bills (spec §3.3).
+
+enum AnalysisStatus {
+  queued // enqueued, waiting for the worker
+  analyzing // a job holds the lease and is calling the provider
+  ready // validated result persisted
+  stale // message content changed after the result was stored
+  limited // analyzed from snippet/subject only (no body text); spec §3.1
+  failed // safe error category recorded; retry available
+}
+
+enum AiCategory {
+  work
+  personal
+  finance
+  shopping
+  travel
+  notification
+  promotion
+  social
+  other
+}
+
+enum AiPriority {
+  low
+  normal
+  high
+  urgent
+}
+
+model EmailAnalysis {
+  id                 String           @id @default(uuid(7))
+  gmailMessageId     String           @unique // one CURRENT analysis row per message
+  gmailMessage       GmailMessage     @relation(fields: [gmailMessageId], references: [id], onDelete: Cascade)
+  googleConnectionId String // denormalized owner mailbox (cleanup + index)
+  profileId          String // owner profile at analysis time (scoping)
+  profile            PlayerProfile    @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  status             AnalysisStatus   @default(queued)
+  contentFingerprint String // sha256 of the analyzed content fields (spec §3.3)
+  schemaVersion      Int              @default(1)
+  modelId            String           @default("") // provider model identifier
+
+  category           AiCategory? // null until a validated ready/limited result
+  priority           AiPriority? // null until a validated ready/limited result
+  summary            String? // null until a validated ready/limited result
+  result             Json? // {actionItems:[…], deadlines:[…]} — validated, size-limited
+  limited            Boolean          @default(false) // snippet-only analysis (no body)
+  usageConsumed      Boolean          @default(false) // daily unit reserved (billing guard)
+  errorClass         String? // safe category only, never raw provider errors
+
+  queuedAt           DateTime         @default(now())
+  analyzedAt         DateTime?
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+
+  // Cleanup by mailbox (disconnect/release/erasure) + owner/status lookups.
+  @@index([googleConnectionId])
+  @@index([profileId, status])
+}
+
+// AiDailyUsage — atomic per-player daily accounting (spec §3.3): server-
+// authoritative, DB-backed (never a process counter), reset at 00:00 UTC.
+// A unit is reserved with a conditional increment BEFORE the provider call
+// (so two racing jobs cannot both slip under the cap) and released on
+// failure, so only a successful analysis consumes budget. One unit per
+// successful analysis (user decision 2026-10-11: B10 has no reply drafts, so
+// the unit is analysis-only — supersedes the analysis+draft wording in
+// MASTER §5.3 for this phase).
+
+model AiDailyUsage {
+  id        String        @id @default(uuid(7))
+  profileId String
+  profile   PlayerProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  dayUtc    DateTime // UTC day start (00:00:00.000Z)
+  units     Int           @default(0)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@unique([profileId, dayUtc])
+}
+
+// AiSettings — the GLOBAL per-player AI pause (spec §3.3: one flag blocks
+// background AND player-triggered analysis across all mailboxes; stored
+// results stay readable). Kept off the B5 prefs JSONB so the B5 six-key
+// allowlist and version counter stay untouched.
+
+model AiSettings {
+  id        String        @id @default(uuid(7))
+  profileId String        @unique
+  profile   PlayerProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  paused    Boolean       @default(false)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
